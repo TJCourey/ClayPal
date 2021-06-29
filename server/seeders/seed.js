@@ -13,23 +13,23 @@ db.once("open", async () => {
     await User.create(userSeeds);
 
     for (let i = 0; i < skeetSeeds.length; i++) {
-      const { _id, thoughtAuthor } = await SkeetScore.create(skeetSeeds[i]);
+      const { _id, shooter } = await SkeetScore.create(skeetSeeds[i]);
       const user = await User.findOneAndUpdate(
-        { username: thoughtAuthor },
+        { username: shooter },
         {
           $addToSet: {
-            thoughts: _id,
+            SkeetScore: _id,
           },
         }
       );
     }
     for (let i = 0; i < trapSeeds.length; i++) {
-      const { _id, thoughtAuthor } = await TrapScore.create(trapSeeds[i]);
+      const { _id, shooter } = await TrapScore.create(trapSeeds[i]);
       const user = await User.findOneAndUpdate(
-        { username: thoughtAuthor },
+        { username: shooter },
         {
           $addToSet: {
-            thoughts: _id,
+            TrapScore: _id,
           },
         }
       );
