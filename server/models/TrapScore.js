@@ -1,4 +1,5 @@
 const { schema, model, Schema } = require("mongoose");
+const dateFormat = require("../utils/dateFormat");
 
 const trapScoreSchema = new Schema({
   overallScore: {
