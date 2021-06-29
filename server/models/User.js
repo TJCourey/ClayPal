@@ -1,6 +1,6 @@
 const { schema, model, Schema } = require("mongoose");
-const skeetScoreSchema = require("./SkeetScore");
-const trapScoreSchema = require("./TrapScore");
+// const SkeetScore = require("./SkeetScore");
+// const TrapScore = require("./TrapScore");
 
 const userSchema = new Schema({
   username: {
@@ -20,9 +20,19 @@ const userSchema = new Schema({
     match: [/.+@.+\..+/, "Must match an email address!"],
   },
 
-  skeetScore: [skeetScoreSchema],
+  skeetScore: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "SkeetScore",
+    },
+  ],
 
-  trapScore: [trapScoreSchema],
+  trapScore: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "TrapScore",
+    },
+  ],
 });
 
 const User = model("User", userSchema);
