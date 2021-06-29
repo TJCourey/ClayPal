@@ -6,14 +6,14 @@ const typeDefs = gql`
     username: String
     email: String
     password: String
-    skeetScore: [SkeetScore]!
-    trapScore: [TrapScore]!
+    skeetScore: [SkeetScore]
+    trapScore: [TrapScore]
   }
 
   type SkeetScore {
     _id: ID
     overallScore: String
-    station: String
+    station: [String]
     weapon: String
     date: String
   }
@@ -21,7 +21,7 @@ const typeDefs = gql`
   type TrapScore {
     _id: ID
     overallScore: String
-    station: String
+    station: [String]
     weapon: String
     date: String
   }

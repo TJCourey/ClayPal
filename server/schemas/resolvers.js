@@ -1,24 +1,32 @@
 const { AuthenticationError } = require("apollo-server-express");
+
+
+
 const { User } = require("../models");
+
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
     users: async () => {
-      return User.find().populate("skeetScore").populate("trapScore");
+      return await User.find().populate("skeetScore").populate("trapScore");
     },
     user: async (parent, { username }) => {
-      return User.findOne({ username })
+      return await User.findOne({ username })
         .populate("skeetScore")
         .populate("trapScore");
     },
     skeetScore: async (parent, { username }, context) => {
       const params = username ? { username } : {};
-      return User.findOne({ _id: context.user._id }).populate("skeetScore");
+      return await User.findOne({ _id: context.user._id }).populate(
+        "skeetScore"
+      );
     },
     trapScore: async (parent, { username }, context) => {
       const params = username ? { username } : {};
-      return User.findOne({ _id: context.user._id }).populate("trapScore");
+      return await User.findOne({ _id: context.user._id }).populate(
+        "trapScore"
+      );
     },
   },
 
