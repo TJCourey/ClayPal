@@ -29,6 +29,6 @@ const trapScoreSchema = new Schema({
   },
 });
 
-const TrapScore = model("trapScore", trapScoreSchema);
+const TrapScore = model("TrapScore", trapScoreSchema);
 
 module.exports = TrapScore;
