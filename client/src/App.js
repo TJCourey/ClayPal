@@ -1,19 +1,18 @@
+import Footer from "./components/footer/footer.js";
+import skeet from "./components/img/skeet.png";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1> SKEET SKEET SKEET </h1>
+      <img src={skeet} alt="skeet skeet skeet"></img>
+      <Router>
+        <Switch>
+          <Route></Route>
+        </Switch>
+        <Footer />
+      </Router>
     </div>
   );
 }
