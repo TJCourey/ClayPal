@@ -8,12 +8,23 @@ db.once("open", async () => {
   try {
     await SkeetScore.deleteMany({});
     await TrapScore.deleteMany({});
-    await Users.deleteMany({});
+    await User.deleteMany({});
 
     await User.create(userSeeds);
 
-    for (let i = 0; i < thoughtSeeds.length; i++) {
-      const { _id, thoughtAuthor } = await Thought.create(thoughtSeeds[i]);
+    for (let i = 0; i < skeetSeeds.length; i++) {
+      const { _id, thoughtAuthor } = await SkeetScore.create(skeetSeeds[i]);
+      const user = await User.findOneAndUpdate(
+        { username: thoughtAuthor },
+        {
+          $addToSet: {
+            thoughts: _id,
+          },
+        }
+      );
+    }
+    for (let i = 0; i < trapSeeds.length; i++) {
+      const { _id, thoughtAuthor } = await TrapScore.create(trapSeeds[i]);
       const user = await User.findOneAndUpdate(
         { username: thoughtAuthor },
         {
