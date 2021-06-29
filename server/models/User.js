@@ -1,6 +1,7 @@
 const { schema, model, Schema } = require("mongoose");
 // const SkeetScore = require("./SkeetScore");
 // const TrapScore = require("./TrapScore");
+const bcrypt = require("bcrypt");
 
 const userSchema = new Schema({
   username: {
