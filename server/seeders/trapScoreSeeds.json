@@ -1,0 +1,22 @@
+[
+  {
+    "overallScore": "18",
+    "station": [3, 4, 4, 5, 2],
+    "weapon": "Mossberg 500"
+  },
+  {
+    "overallScore": "13",
+    "station": [2, 3, 4, 2, 2],
+    "weapon": "Remington 870"
+  },
+  {
+    "overallScore": "18",
+    "station": [4, 3, 3, 4, 4],
+    "weapon": "Tri-Star Setter"
+  },
+  {
+    "overallScore": "21",
+    "station": [5, 4, 4, 3, 5],
+    "weapon": "CZ Drake"
+  }
+]

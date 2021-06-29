@@ -1,6 +1,6 @@
 const { schema, model, Schema } = require("mongoose");
-const skeetScoreSchema = require("./skeetScore");
-const trapScoreSchema = require("./trapScore");
+const skeetScoreSchema = require("./SkeetScore");
+const trapScoreSchema = require("./TrapScore");
 
 const userSchema = new Schema({
   username: {
