@@ -84,4 +84,5 @@ const resolvers = {
   },
 };
 
+//This is a comment
 module.exports = resolvers;
