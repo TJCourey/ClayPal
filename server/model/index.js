@@ -1,4 +1,4 @@
-const User = require("./users");
+const User = require("./User");
 const SkeetScore = require("./skeetScore");
 const TrapScore = require("./trapScore");
 
