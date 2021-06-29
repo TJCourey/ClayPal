@@ -6,12 +6,18 @@ const trapScoreSchema = new Schema({
     required: true,
   },
 
-  station: {
+  station: [
+    {
+      type: String,
+      required: true,
+    },
+  ],
+
+  weapon: {
     type: String,
     required: true,
   },
-
-  weapon: {
+  shooter: {
     type: String,
     required: true,
   },
@@ -23,6 +29,6 @@ const trapScoreSchema = new Schema({
   },
 });
 
-//const TrapScore = model("trapScore", trapScoreSchema);
+const TrapScore = model("trapScore", trapScoreSchema);
 
-module.exports = trapScoreSchema;
+module.exports = TrapScore;
