@@ -6,12 +6,18 @@ const skeetScoreSchema = new Schema({
     required: true,
   },
 
-  station: {
-    type: Number,
-    required: true,
-  },
+  station: [
+    {
+      type: Number,
+      required: true,
+    },
+  ],
 
   weapon: {
+    type: String,
+    required: true,
+  },
+  shooter: {
     type: String,
     required: true,
   },
@@ -23,6 +29,6 @@ const skeetScoreSchema = new Schema({
   },
 });
 
-//const SkeetScore = model("SkeetScore", skeetScoreSchema);
+const SkeetScore = model("SkeetScore", skeetScoreSchema);
 
-module.exports = skeetScoreSchema;
+module.exports = SkeetScore;
