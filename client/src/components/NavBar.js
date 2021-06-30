@@ -15,13 +15,15 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
 import logo from "./img/logo.png";
 import DashboardRoundedIcon from "@material-ui/icons/DashboardRounded";
 import StarIcon from "@material-ui/icons/Star";
 import PlayCircleFilledWhiteIcon from "@material-ui/icons/PlayCircleFilledWhite";
 import PersonSharpIcon from "@material-ui/icons/PersonSharp";
+import { AiOutlineSafetyCertificate } from "react-icons/ai";
+import { GiSilverBullet } from "react-icons/gi";
+import { GoSearch } from "react-icons/go";
+import { Link } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -77,7 +79,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   toolbar: {
-    backgroundColor: "#113b08",
     display: "flex",
     alignItems: "center",
     justifyContent: "flex-end",
@@ -159,8 +160,12 @@ export default function MiniDrawer() {
             (text, index) => (
               <ListItem button key={text}>
                 <ListItemIcon>
-                  {/* these are the icons */}
-                  {index % 2 === 0 ? <DashboardRoundedIcon /> : <StarIcon />}
+                  {index === 0 ? <DashboardRoundedIcon /> : <> </>}
+                  <Link to="/leaderboard">
+                    {index === 1 ? <StarIcon /> : <> </>}
+                  </Link>
+                  {index === 2 ? <PlayCircleFilledWhiteIcon /> : <> </>}
+                  {index === 3 ? <PersonSharpIcon /> : <> </>}
                 </ListItemIcon>
                 <ListItemText primary={text} />
               </ListItem>
@@ -172,7 +177,9 @@ export default function MiniDrawer() {
           {["Gun Safety", "Buy Ammo", "Where to Shoot"].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                {index === 0 ? <AiOutlineSafetyCertificate /> : <> </>}
+                {index === 1 ? <GiSilverBullet /> : <> </>}
+                {index === 2 ? <GoSearch /> : <> </>}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
