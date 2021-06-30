@@ -7,7 +7,7 @@ import { QUERY_USER } from "../utils/queries";
 
 const Home = () => {
   const { loading, data } = useQuery(QUERY_USER);
-  const profiles = data?.profiles || [];
+  const user = data?.user || [];
 
   //   return (
   //     <main>
