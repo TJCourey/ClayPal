@@ -117,12 +117,15 @@ export default function VerticalTabs() {
   const renderTab = (Tab) => {
     const n = tab.maxPoints;
     return (
-      <TabPanel value={tab.id} index={tab.id}>
+      <TabPanel key={tab.id} value={tab.id} index={tab.id}>
         Station {tab.station}:{tab.rules}
         <br></br>
         Hits:{" "}
         {[...Array(n)].map((elementInArray, index) => (
-          <Checkbox inputProps={{ "aria-label": "uncontrolled-checkbox" }} />
+          <Checkbox
+            key={index}
+            inputProps={{ "aria-label": "uncontrolled-checkbox" }}
+          />
         ))}
       </TabPanel>
     );
