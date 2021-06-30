@@ -26,6 +26,15 @@ function App() {
           <Route exact path="/login">
             <Login />
           </Route>
+          <Route exact path="/signup">
+            <Signup />
+          </Route>
+          <Route exact path="/skeetscore">
+            <SkeetScore />
+          </Route>
+          <Route exact path="/trapscore">
+            <TrapScore />
+          </Route>
         </Switch>
       </Router>
     </div>
