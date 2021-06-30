@@ -1,3 +1,5 @@
+
+
 import React from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
@@ -12,6 +14,50 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+
+
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+
+import { useMutation } from "@apollo/client";
+import { ADD_PROFILE } from "../utils/mutations";
+
+import Auth from "../utils/auth";
+
+const Signup = () => {
+  const [formState, setFormState] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+  const [addProfile, { error, data }] = useMutation(ADD_PROFILE);
+
+  // update state based on form input changes
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+
+  // submit form
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    console.log(formState);
+
+    try {
+      const { data } = await addProfile({
+        variables: { ...formState },
+      });
+
+      Auth.login(data.addProfile.token);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
 
 function Copyright() {
   return (
@@ -138,3 +184,6 @@ export default function SignUp() {
     </Container>
   );
 }
+
+
+
