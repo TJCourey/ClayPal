@@ -114,7 +114,7 @@ export default function SkeetScore() {
     setValue(newValue);
   };
 
-  const renderTab = (Tab) => {
+  const renderTab = (tab) => {
     const n = tab.maxPoints;
     return (
       <TabPanel key={tab.id} value={tab.id} index={tab.id}>
