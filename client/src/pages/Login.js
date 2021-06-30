@@ -173,8 +173,7 @@ export default function SignInSide() {
       </Grid>
     </Grid>
   );
-}
-}
+}}
 
 export default Login 
 
