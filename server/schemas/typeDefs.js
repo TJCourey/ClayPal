@@ -41,12 +41,8 @@ const typeDefs = gql`
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addSkeetScore(
-      overallScore: String!
-      station: String!
-      weapon: String!
-    ): User
-    addTrapScore(overallScore: String!, station: String!, weapon: String!): User
+    addSkeetScore(station: String!, weapon: String!): User
+    addTrapScore(station: String!, weapon: String!): User
   }
 `;
 

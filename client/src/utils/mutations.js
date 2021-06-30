@@ -25,36 +25,18 @@ export const LOGIN_USER = gql`
   }
 `;
 export const ADD_SKEET_SCORE = gql`
-  mutation addSkeetScore(
-    $overallScore: String!
-    $station: String!
-    $weapon: String!
-  ) {
-    addSkeetScore(
-      overallScore: $overallScore
-      station: $station
-      weapon: $weapon
-    ) {
+  mutation addSkeetScore($station: String!, $weapon: String!) {
+    addSkeetScore(station: $station, weapon: $weapon) {
       _id
       username
-      skeetScore
     }
   }
 `;
 export const ADD_TRAP_SCORE = gql`
-  mutation addTrapScore(
-    $overallScore: String!
-    $station: String!
-    $weapon: String!
-  ) {
-    addTrapScore(
-      overallScore: $overallScore
-      station: $station
-      weapon: $weapon
-    ) {
+  mutation addTrapScore($station: String!, $weapon: String!) {
+    addTrapScore(station: $station, weapon: $weapon) {
       _id
       username
-      trapScore
     }
   }
 `;
