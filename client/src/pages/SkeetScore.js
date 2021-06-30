@@ -5,6 +5,7 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
+import Checkbox from "@material-ui/core/Checkbox";
 
 const skeetRules = [
   {
@@ -114,7 +115,7 @@ export default function SkeetScore() {
     setValue(newValue);
   };
 
-  const renderTab = (Tab) => {
+  const renderTab = (tab) => {
     const n = tab.maxPoints;
     return (
       <TabPanel key={tab.id} value={tab.id} index={tab.id}>
