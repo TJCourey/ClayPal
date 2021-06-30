@@ -174,6 +174,7 @@ export default function SignInSide() {
     </Grid>
   );
 }
+}
 
 export default Login 
 
