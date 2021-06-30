@@ -20,6 +20,7 @@ import DashboardRoundedIcon from "@material-ui/icons/DashboardRounded";
 import StarIcon from "@material-ui/icons/Star";
 import PlayCircleFilledWhiteIcon from "@material-ui/icons/PlayCircleFilledWhite";
 import PersonSharpIcon from "@material-ui/icons/PersonSharp";
+import PlayCircleOutlineIcon from "@material-ui/icons/PlayCircleOutline";
 import { AiOutlineSafetyCertificate } from "react-icons/ai";
 import { GiSilverBullet } from "react-icons/gi";
 import { GoSearch } from "react-icons/go";
@@ -156,30 +157,76 @@ export default function MiniDrawer() {
         </div>
         <Divider />
         <List>
-          {["Home", "Leaderboard", "Start Game", "Login/Logout"].map(
-            (text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>
+          {[
+            "Home",
+            "Leaderboard",
+            "Start Skeet",
+            "Start Trap",
+            "Login/Logout",
+          ].map((text, index) => (
+            <ListItem button key={text}>
+              <ListItemIcon>
+                <Link to="/">
                   {index === 0 ? <DashboardRoundedIcon /> : <> </>}
-                  <Link to="/leaderboard">
-                    {index === 1 ? <StarIcon /> : <> </>}
-                  </Link>
+                </Link>
+                <Link to="/leaderboard">
+                  {index === 1 ? <StarIcon /> : <> </>}
+                </Link>
+                <Link to="/skeetscore">
                   {index === 2 ? <PlayCircleFilledWhiteIcon /> : <> </>}
-                  {index === 3 ? <PersonSharpIcon /> : <> </>}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            )
-          )}
+                </Link>
+                <Link to="/trapscore">
+                  {index === 3 ? <PlayCircleOutlineIcon /> : <> </>}
+                </Link>
+                <Link to="">{index === 4 ? <PersonSharpIcon /> : <> </>}</Link>
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItem>
+          ))}
         </List>
         <Divider />
         <List>
           {["Gun Safety", "Buy Ammo", "Where to Shoot"].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>
-                {index === 0 ? <AiOutlineSafetyCertificate /> : <> </>}
-                {index === 1 ? <GiSilverBullet /> : <> </>}
-                {index === 2 ? <GoSearch /> : <> </>}
+                {index === 0 ? (
+                  <a
+                    rel="NRAsafety"
+                    href="https://gunsafetyrules.nra.org/"
+                    alt="NRA Safety"
+                    target="_blank"
+                  >
+                    <AiOutlineSafetyCertificate />{" "}
+                  </a>
+                ) : (
+                  <> </>
+                )}
+                {index === 1 ? (
+                  <a
+                    rel="Ammo"
+                    href="https://www.freedommunitions.com/"
+                    alt="Buy Ammo"
+                    target="_blank"
+                  >
+                    {" "}
+                    <GiSilverBullet />{" "}
+                  </a>
+                ) : (
+                  <> </>
+                )}
+                {index === 2 ? (
+                  <a
+                    rel="Wheretoshoot"
+                    href="https://www.wheretoshoot.org/"
+                    alt="Where to shoot"
+                    target="_blank"
+                  >
+                    {" "}
+                    <GoSearch />{" "}
+                  </a>
+                ) : (
+                  <> </>
+                )}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
