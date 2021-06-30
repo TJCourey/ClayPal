@@ -7,6 +7,7 @@ function App() {
     <div className="App">
       <h1> SKEET SKEET SKEET </h1>
       <img src={skeet} alt="skeet skeet skeet"></img>
+
       <Router>
         <Switch>
           <Route></Route>
