@@ -1,4 +1,4 @@
-import Footer from "./components/footer/footer.js";
+import StickyFooter from "./components/footer.js";
 import skeet from "./components/img/skeet.png";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -11,7 +11,7 @@ function App() {
         <Switch>
           <Route></Route>
         </Switch>
-        <Footer />
+        <StickyFooter />
       </Router>
     </div>
   );
