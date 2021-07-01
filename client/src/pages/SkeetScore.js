@@ -6,6 +6,8 @@ import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Checkbox from "@material-ui/core/Checkbox";
+import Button from "@material-ui/core/Button";
+import Container from "@material-ui/core/Container";
 
 const skeetRules = [
   {
@@ -121,7 +123,7 @@ export default function SkeetScore() {
       <TabPanel key={tab.id} value={tab.id} index={tab.id}>
         Station {tab.station}:{tab.rules}
         <br></br>
-        Hits:{" "}
+        Hits:
         {[...Array(n)].map((elementInArray, index) => (
           <Checkbox
             key={index}
@@ -133,26 +135,72 @@ export default function SkeetScore() {
   };
 
   return (
-    <div className={classes.root}>
-      <Tabs
-        orientation="vertical"
-        variant="scrollable"
-        value={value}
-        onChange={handleChange}
-        aria-label="Vertical tabs example"
-        className={classes.tabs}
-      >
-        <Tab label="Station One" {...a11yProps(0)} />
-        <Tab label="Station Two" {...a11yProps(1)} />
-        <Tab label="Station Three" {...a11yProps(2)} />
-        <Tab label="Station Four" {...a11yProps(3)} />
-        <Tab label="Station Five" {...a11yProps(4)} />
-        <Tab label="Station Six" {...a11yProps(5)} />
-        <Tab label="Station Seven" {...a11yProps(6)} />
-        <Tab label="Station Eight" {...a11yProps(7)} />
-        <Tab label="Bonus" {...a11yProps(8)} />
-      </Tabs>
-      {skeetRules.map(renderTab)}
-    </div>
+    <>
+      <Container>
+        <form>
+          <div className={classes.root}>
+            <Tabs
+              orientation="vertical"
+              variant="scrollable"
+              value={value}
+              onChange={handleChange}
+              aria-label="Vertical tabs example"
+              className={classes.tabs}
+            >
+              <Tab label="Station One" {...a11yProps(0)} />
+              <Tab label="Station Two" {...a11yProps(1)} />
+              <Tab label="Station Three" {...a11yProps(2)} />
+              <Tab label="Station Four" {...a11yProps(3)} />
+              <Tab label="Station Five" {...a11yProps(4)} />
+              <Tab label="Station Six" {...a11yProps(5)} />
+              <Tab label="Station Seven" {...a11yProps(6)} />
+              <Tab label="Station Eight" {...a11yProps(7)} />
+              <Tab label="Bonus" {...a11yProps(8)} />
+            </Tabs>
+            {skeetRules.map(renderTab)}
+          </div>
+          <Button variant="contained">Default</Button>
+        </form>
+      </Container>
+      <div className={classes.root}>
+        <Tabs
+          orientation="vertical"
+          variant="scrollable"
+          value={value}
+          onChange={handleChange}
+          aria-label="Vertical tabs example"
+          className={classes.tabs}
+        >
+          <Tab label="Item One" {...a11yProps(0)} />
+          <Tab label="Item Two" {...a11yProps(1)} />
+          <Tab label="Item Three" {...a11yProps(2)} />
+          <Tab label="Item Four" {...a11yProps(3)} />
+          <Tab label="Item Five" {...a11yProps(4)} />
+          <Tab label="Item Six" {...a11yProps(5)} />
+          <Tab label="Item Seven" {...a11yProps(6)} />
+        </Tabs>
+        <TabPanel value={value} index={0}>
+          Item One
+        </TabPanel>
+        <TabPanel value={value} index={1}>
+          Item Two
+        </TabPanel>
+        <TabPanel value={value} index={2}>
+          Item Three
+        </TabPanel>
+        <TabPanel value={value} index={3}>
+          Item Four
+        </TabPanel>
+        <TabPanel value={value} index={4}>
+          Item Five
+        </TabPanel>
+        <TabPanel value={value} index={5}>
+          Item Six
+        </TabPanel>
+        <TabPanel value={value} index={6}>
+          Item Seven
+        </TabPanel>
+      </div>
+    </>
   );
 }

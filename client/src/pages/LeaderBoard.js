@@ -42,7 +42,7 @@ const rows = [
   createData("Jack", "Mossberg 500", 15, 18),
   createData("Josh", "Remington 870", 19, 13),
   createData("Nick", "Tri-star Setter", 20, 18),
-  createData("Tj", "CZ Drake", 19, 21),
+  createData("TJ", "CZ Drake", 19, 21),
 ];
 
 const useStyles = makeStyles({

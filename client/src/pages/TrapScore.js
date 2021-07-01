@@ -6,7 +6,8 @@ import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Checkbox from "@material-ui/core/Checkbox";
-
+import Button from "@material-ui/core/Button";
+import Container from "@material-ui/core/Container";
 const trapRules = [
   {
     id: 0,
@@ -93,7 +94,7 @@ export default function TrapScore() {
       <TabPanel key={tab.id} value={tab.id} index={tab.id}>
         Station {tab.station}:{tab.rules}
         <br></br>
-        Hits:{" "}
+        Hits:
         {[...Array(n)].map((elementInArray, index) => (
           <Checkbox
             key={index}
@@ -105,22 +106,25 @@ export default function TrapScore() {
   };
 
   return (
-    <div className={classes.root}>
-      <Tabs
-        orientation="vertical"
-        variant="scrollable"
-        value={value}
-        onChange={handleChange}
-        aria-label="Vertical tabs example"
-        className={classes.tabs}
-      >
-        <Tab label="Station One" {...a11yProps(0)} />
-        <Tab label="Station Two" {...a11yProps(1)} />
-        <Tab label="Station Three" {...a11yProps(2)} />
-        <Tab label="Station Four" {...a11yProps(3)} />
-        <Tab label="Station Five" {...a11yProps(4)} />
-      </Tabs>
-      {trapRules.map(renderTab)}
-    </div>
+    <Container>
+      <div className={classes.root}>
+        <Tabs
+          orientation="vertical"
+          variant="scrollable"
+          value={value}
+          onChange={handleChange}
+          aria-label="Vertical tabs example"
+          className={classes.tabs}
+        >
+          <Tab label="Station One" {...a11yProps(0)} />
+          <Tab label="Station Two" {...a11yProps(1)} />
+          <Tab label="Station Three" {...a11yProps(2)} />
+          <Tab label="Station Four" {...a11yProps(3)} />
+          <Tab label="Station Five" {...a11yProps(4)} />
+        </Tabs>
+        {trapRules.map(renderTab)}
+        <Button variant="contained">Default</Button>
+      </div>
+    </Container>
   );
 }
