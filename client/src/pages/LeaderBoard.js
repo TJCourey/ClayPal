@@ -30,8 +30,14 @@ const columns = [
     minWidth: 170,
     align: "right",
   },
+  {
+    id: "overallScore",
+    label: "Overall Score",
+    minWidth: 170,
+    align: "right",
+  },
 ];
-
+//Fixed overall score by adding it as an object above
 function createData(name, weapon, skeet, trap) {
   const overallScore = skeet + trap;
   return { name, weapon, skeet, trap, overallScore };
