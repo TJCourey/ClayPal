@@ -1,19 +1,20 @@
-import Home from "./components/Home.js";
+import Main from "./components/Main.js";
 import MiniDrawer from "./components/NavBar.js";
 import StickyHeadTable from "./pages/LeaderBoard";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import SkeetScore from "./pages/SkeetScore";
 import TrapScore from "./pages/TrapScore";
+import skeet from "./components/img/skeet.png";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { setContext } from "@apollo/client/link/context";
+
 import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
   createHttpLink,
 } from "@apollo/client";
-import skeet from "./components/img/skeet.png";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { setContext } from "@apollo/client/link/context";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -45,12 +46,11 @@ function App() {
       <div className="App">
         {/* <h1> SKEET SKEET SKEET </h1>
       <img src={skeet} alt="skeet skeet skeet"></img> */}
-
         <Router>
           <MiniDrawer />
           <Switch>
             <Route exact path="/">
-              <Home />{" "}
+              <Main />{" "}
             </Route>
             <Route exact path="/leaderboard">
               <StickyHeadTable />{" "}
