@@ -140,6 +140,7 @@ export default function SkeetScore() {
         <h3>{addRules}</h3>
       </Container>
       <Container className="skeetForm">
+        <h1> NEW SKEET CARD</h1>
         <form>
           <div className={classes.root}>
             <AppBar position="static" color="default">

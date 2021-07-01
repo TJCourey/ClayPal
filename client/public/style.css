@@ -13,3 +13,16 @@
   border-radius: 4px;
   margin-top: 5%;
 }
+
+html {
+  background-color: #abbf6d;
+}
+
+.App {
+  background-color: #abbf6d;
+}
+
+h1 {
+  text-align: center;
+  color: #ffc04d;
+  font-size: 400%;

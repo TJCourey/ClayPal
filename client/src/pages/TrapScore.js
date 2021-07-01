@@ -144,7 +144,7 @@ export default function TrapScore() {
     </>
 =======
     <Container className="trapForm">
-      <h1> LEADERBOARD</h1>
+      <h1> NEW TRAP CARD</h1>
       <div className={classes.root}>
         <AppBar position="static" color="default">
           <Tabs
