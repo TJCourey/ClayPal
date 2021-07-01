@@ -135,6 +135,7 @@ export default function SkeetScore() {
   return (
     <>
       <Container className="skeetForm">
+        <h1> NEW SKEET CARD</h1>
         <form>
           <div className={classes.root}>
             <AppBar position="static" color="default">
