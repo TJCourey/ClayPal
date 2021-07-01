@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import SkeetScore from "./pages/SkeetScore";
 import TrapScore from "./pages/TrapScore";
+import ApolloProvider from "@apollo/client";
 
 import skeet from "./components/img/skeet.png";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -14,29 +15,31 @@ function App() {
     <div className="App">
       {/* <h1> SKEET SKEET SKEET </h1>
       <img src={skeet} alt="skeet skeet skeet"></img> */}
-      <Router>
-        <MiniDrawer />
-        <Switch>
-          <Route exact path="/">
-            <Main />{" "}
-          </Route>
-          <Route exact path="/leaderboard">
-            <StickyHeadTable />{" "}
-          </Route>
-          <Route exact path="/login">
-            <Login />
-          </Route>
-          <Route exact path="/signup">
-            <Signup />
-          </Route>
-          <Route exact path="/skeetscore">
-            <SkeetScore />
-          </Route>
-          <Route exact path="/trapscore">
-            <TrapScore />
-          </Route>
-        </Switch>
-      </Router>
+      <ApolloProvider>
+        <Router>
+          <MiniDrawer />
+          <Switch>
+            <Route exact path="/">
+              <Main />{" "}
+            </Route>
+            <Route exact path="/leaderboard">
+              <StickyHeadTable />{" "}
+            </Route>
+            <Route exact path="/login">
+              <Login />
+            </Route>
+            <Route exact path="/signup">
+              <Signup />
+            </Route>
+            <Route exact path="/skeetscore">
+              <SkeetScore />
+            </Route>
+            <Route exact path="/trapscore">
+              <TrapScore />
+            </Route>
+          </Switch>
+        </Router>
+      </ApolloProvider>
     </div>
   );
 }
