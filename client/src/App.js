@@ -8,13 +8,9 @@ import TrapScore from "./pages/TrapScore";
 import skeet from "./components/img/skeet.png";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { setContext } from "@apollo/client/link/context";
+import { ApolloProvider } from "@apollo/react-hooks";
 
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  createHttpLink,
-} from "@apollo/client";
+import { ApolloClient, InMemoryCache, createHttpLink } from "@apollo/client";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({

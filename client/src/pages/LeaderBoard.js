@@ -15,6 +15,8 @@ import Tab from "@material-ui/core/Tab";
 import PropTypes from "prop-types";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
+import { QUERY_USER } from "../utils/queries";
+import { useQuery } from "@apollo/react-hooks";
 
 const skeetColumns = [
   { id: "name", label: "Name", minWidth: 170 },
@@ -61,18 +63,23 @@ const overallColumns = [
     align: "right",
   },
 ];
+
+// const { data } = useQuery(QUERY_USER);
+
 //Fixed overall score by adding it as an object above
 function createData(name, weapon, skeet, trap) {
   const overallScore = skeet + trap;
   return { name, weapon, skeet, trap, overallScore };
 }
 // We are going to need data from the database here.
-const rows = [
-  createData("Jack", "Mossberg 500", 15, 18),
-  createData("Josh", "Remington 870", 19, 13),
-  createData("Nick", "Tri-star Setter", 20, 18),
-  createData("TJ", "CZ Drake", 19, 21),
-];
+// function rows() {
+//   const { data } = useQuery(QUERY_USER);
+//   return data.map(createData);
+//   // createData("Jack", "Mossberg 500", 15, 18),
+//   // createData("Josh", "Remington 870", 19, 13),
+//   // createData("Nick", "Tri-star Setter", 20, 18),
+//   // createData("TJ", "CZ Drake", 19, 21),
+// }
 
 const useStyles = makeStyles({
   root: {
@@ -114,6 +121,9 @@ function a11yProps(index) {
   };
 }
 export default function StickyHeadTable() {
+  const { users } = useQuery(QUERY_USER);
+  console.log(users);
+  const rows = users.map(createData);
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
