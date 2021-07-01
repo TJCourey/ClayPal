@@ -178,7 +178,9 @@ export default function MiniDrawer() {
                 <Link to="/trapscore">
                   {index === 3 ? <PlayCircleOutlineIcon /> : <> </>}
                 </Link>
-                <Link to="">{index === 4 ? <PersonSharpIcon /> : <> </>}</Link>
+                <Link to="/login">
+                  {index === 4 ? <PersonSharpIcon /> : <> </>}
+                </Link>
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
