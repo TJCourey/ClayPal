@@ -125,8 +125,6 @@ const Login = (props) => {
             Sign in
           </Typography>
 
-          {error ? <p>{JSON.stringify(error)}</p> : null}
-
           {data ? (
             <p>
               Success! You may now head{" "}
