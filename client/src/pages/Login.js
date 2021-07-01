@@ -24,7 +24,7 @@ function Copyright() {
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
       <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+        Claypal
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -35,9 +35,11 @@ function Copyright() {
 const useStyles = makeStyles((theme) => ({
   root: {
     height: "100vh",
+    backgroundColor: "#708238",
   },
   image: {
-    backgroundImage: "url(https://source.unsplash.com/random)",
+    backgroundImage:
+      "url(https://d3qdvvkm3r2z1i.cloudfront.net/media/catalog/product/cache/1/thumbnail/85e4522595efc69f496374d01ef2bf13/s/k/skeet-newthumb.png)",
     backgroundRepeat: "no-repeat",
     backgroundColor:
       theme.palette.type === "light"
@@ -47,20 +49,23 @@ const useStyles = makeStyles((theme) => ({
     backgroundPosition: "center",
   },
   paper: {
-    margin: theme.spacing(8, 4),
+    backgroundColor: "#abbf6d",
+    padding: theme.spacing(8, 4),
+    height: "100%",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: "#ffa500",
   },
   form: {
-    width: "100%", // Fix IE 11 issue.
+    width: "100%",
     marginTop: theme.spacing(1),
   },
   submit: {
+    backgroundColor: "#ffa500",
     margin: theme.spacing(3, 0, 2),
   },
 }));
