@@ -113,6 +113,8 @@ const Login = (props) => {
             </Typography>
             <form className={classes.form} noValidate>
               <TextField
+                value={formState.email}
+                onChange={handleChange}
                 variant="outlined"
                 margin="normal"
                 required
@@ -124,6 +126,8 @@ const Login = (props) => {
                 autoFocus
               />
               <TextField
+                value={formState.password}
+                onChange={handleChange}
                 variant="outlined"
                 margin="normal"
                 required
