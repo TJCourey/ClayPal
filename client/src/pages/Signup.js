@@ -99,10 +99,12 @@ const Signup = () => {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate>
+        <form onSubmit={handleFormSubmit} className={classes.form} noValidate>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
+                value={formState.firstName}
+                onChange={handleChange}
                 autoComplete="fname"
                 name="firstName"
                 variant="outlined"
@@ -115,6 +117,8 @@ const Signup = () => {
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
+                value={formState.lastName}
+                onChange={handleChange}
                 variant="outlined"
                 required
                 fullWidth
@@ -126,6 +130,8 @@ const Signup = () => {
             </Grid>
             <Grid item xs={12}>
               <TextField
+                value={formState.email}
+                onChange={handleChange}
                 variant="outlined"
                 required
                 fullWidth
@@ -137,6 +143,8 @@ const Signup = () => {
             </Grid>
             <Grid item xs={12}>
               <TextField
+                value={formState.password}
+                onChange={handleChange}
                 variant="outlined"
                 required
                 fullWidth
@@ -165,7 +173,7 @@ const Signup = () => {
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link to="/login" variant="body2">
                 Already have an account? Sign in
               </Link>
             </Grid>
