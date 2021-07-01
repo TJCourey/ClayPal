@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundPosition: "center",
   },
   paper: {
-    backgroundColor: "#708238",
+    backgroundColor: "#abbf6d",
     padding: theme.spacing(8, 4),
     height: "100%",
     display: "flex",
@@ -65,6 +65,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(1),
   },
   submit: {
+    backgroundColor: "#ffa500",
     margin: theme.spacing(3, 0, 2),
   },
 }));
