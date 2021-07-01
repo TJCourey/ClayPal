@@ -25,7 +25,7 @@ function Copyright() {
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
       <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+        ThunderCougarFalconBird
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Signup = () => {
   const [formState, setFormState] = useState({
-    name: "",
+    username: "",
     email: "",
     password: "",
   });
@@ -103,19 +103,19 @@ const Signup = () => {
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
-                value={formState.firstName}
+                value={formState.username}
                 onChange={handleChange}
-                autoComplete="fname"
-                name="firstName"
+                autoComplete="uname"
+                name="username"
                 variant="outlined"
                 required
                 fullWidth
                 id="firstName"
-                label="First Name"
+                label="User Name"
                 autoFocus
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
+            {/* <Grid item xs={12} sm={6}>
               <TextField
                 value={formState.lastName}
                 onChange={handleChange}
@@ -127,7 +127,7 @@ const Signup = () => {
                 name="lastName"
                 autoComplete="lname"
               />
-            </Grid>
+            </Grid> */}
             <Grid item xs={12}>
               <TextField
                 value={formState.email}
