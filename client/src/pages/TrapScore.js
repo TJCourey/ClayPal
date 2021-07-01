@@ -108,7 +108,6 @@ export default function TrapScore() {
   };
 
   return (
-<<<<<<< HEAD
     <>
       <Container className="rulesContainer">
         <h1>Trap Shooting</h1>
@@ -142,31 +141,5 @@ export default function TrapScore() {
         <Button variant="contained">Default</Button>
       </Container>
     </>
-=======
-    <Container className="trapForm">
-      <h1> NEW TRAP CARD</h1>
-      <div className={classes.root}>
-        <AppBar position="static" color="default">
-          <Tabs
-            value={value}
-            onChange={handleChange}
-            indicatorColor="primary"
-            textColor="primary"
-            variant="scrollable"
-            scrollButtons="auto"
-            aria-label="scrollable auto tabs example"
-          >
-            <Tab label="Station One" {...a11yProps(0)} />
-            <Tab label="Station Two" {...a11yProps(1)} />
-            <Tab label="Station Three" {...a11yProps(2)} />
-            <Tab label="Station Four" {...a11yProps(3)} />
-            <Tab label="Station Five" {...a11yProps(4)} />
-          </Tabs>
-        </AppBar>
-        {trapRules.map(renderTab)}
-      </div>
-      <Button variant="contained">Default</Button>
-    </Container>
->>>>>>> main
   );
 }

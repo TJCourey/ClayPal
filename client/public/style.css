@@ -1,6 +1,9 @@
 .scoreTitle {
   margin-top: 5%;
 }
+.leaderTabs {
+  margin-top: 10%;
+}
 .rulesContainer {
   margin-top: 10%;
 }
@@ -26,3 +29,4 @@ h1 {
   text-align: center;
   color: #ffc04d;
   font-size: 400%;
+}
