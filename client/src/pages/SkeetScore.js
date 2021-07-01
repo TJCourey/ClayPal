@@ -118,7 +118,8 @@ export default function SkeetScore() {
     const n = tab.maxPoints;
     return (
       <TabPanel key={tab.id} value={value} index={i}>
-        Station {tab.station}:{tab.rules}
+        Station {tab.station}:<br></br>
+        {tab.rules}
         <br></br>
         Hits:
         {[...Array(n)].map((elementInArray, index) => (
@@ -134,6 +135,10 @@ export default function SkeetScore() {
 
   return (
     <>
+      <Container className="rulesContainer">
+        <h1>Skeet Shooting</h1>
+        <h3>{addRules}</h3>
+      </Container>
       <Container className="skeetForm">
         <form>
           <div className={classes.root}>

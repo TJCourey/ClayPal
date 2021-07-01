@@ -4,11 +4,11 @@ import { makeStyles } from "@material-ui/core/styles";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
-import Box from "@material-ui/core/Box";
+import AppBar from "@material-ui/core/AppBar";
 import Checkbox from "@material-ui/core/Checkbox";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
-import AppBar from "@material-ui/core/AppBar";
+import Box from "@material-ui/core/Box";
 const trapRules = [
   {
     id: 0,
@@ -36,6 +36,11 @@ const trapRules = [
     maxPoints: 5,
   },
 ];
+const addRules = [
+  "A round of trap consists of 25 targets, with 5 shots at each station or post, which is 16 yards from the back of the trap house. Trap is shot in squads of up to five shooters. They move from station to station until the shooter has shot from each station.",
+  "Any type of shotgun may be used – single barrel, double barrel, pump or semi-automatic; and any gauge not larger than 12 gauge. A 12 gauge is the most popular. Any brand of shells is permissible, but nothing larger than size #7-½ (no number lower than #7-½) shot should ever be used.",
+];
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -103,6 +108,41 @@ export default function TrapScore() {
   };
 
   return (
+<<<<<<< HEAD
+    <>
+      <Container className="rulesContainer">
+        <h1>Trap Shooting</h1>
+        <h3>
+          {addRules[0]}
+          <br></br>
+          {addRules[1]}
+        </h3>
+      </Container>
+      <Container className="trapForm">
+        <div className={classes.root}>
+          <AppBar position="static" color="default">
+            <Tabs
+              value={value}
+              onChange={handleChange}
+              indicatorColor="primary"
+              textColor="primary"
+              variant="scrollable"
+              scrollButtons="auto"
+              aria-label="scrollable auto tabs example"
+            >
+              <Tab label="Station One" {...a11yProps(0)} />
+              <Tab label="Station Two" {...a11yProps(1)} />
+              <Tab label="Station Three" {...a11yProps(2)} />
+              <Tab label="Station Four" {...a11yProps(3)} />
+              <Tab label="Station Five" {...a11yProps(4)} />
+            </Tabs>
+          </AppBar>
+          {trapRules.map(renderTab)}
+        </div>
+        <Button variant="contained">Default</Button>
+      </Container>
+    </>
+=======
     <Container className="trapForm">
       <h1> LEADERBOARD</h1>
       <div className={classes.root}>
@@ -127,5 +167,6 @@ export default function TrapScore() {
       </div>
       <Button variant="contained">Default</Button>
     </Container>
+>>>>>>> main
   );
 }
