@@ -1,6 +1,6 @@
 const { AuthenticationError } = require("apollo-server-express");
 
-const { User } = require("../models");
+const { User, SkeetScore, TrapScore } = require("../models");
 
 const { signToken } = require("../utils/auth");
 
@@ -53,12 +53,15 @@ const resolvers = {
     },
 
     addSkeetScore: async (parent, args, context) => {
+      console.log(context.user);
       if (context.user) {
+        const skeetscore = await SkeetScore.create(args);
+
         return User.findOneAndUpdate(
           { _id: context.user._id },
           {
             $addToSet: {
-              skeetScore: args,
+              skeetScore: skeetscore._id,
             },
           },
           {
@@ -72,11 +75,12 @@ const resolvers = {
 
     addTrapScore: async (parent, args, context) => {
       if (context.user) {
+        const trapscore = await TrapScore.create(args);
         return User.findOneAndUpdate(
           { _id: context.user._id },
           {
             $addToSet: {
-              trapScore: args,
+              trapScore: trapscore._id,
             },
           },
           {

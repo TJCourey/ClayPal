@@ -166,7 +166,7 @@ export default function MiniDrawer() {
           ].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>
-                <Link to="/">
+                <Link to="/signup">
                   {index === 0 ? <DashboardRoundedIcon /> : <> </>}
                 </Link>
                 <Link to="/leaderboard">
