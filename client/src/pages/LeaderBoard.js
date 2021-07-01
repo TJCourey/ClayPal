@@ -30,6 +30,12 @@ const columns = [
     minWidth: 170,
     align: "right",
   },
+  {
+    id: "overallScore",
+    label: "Overall Score",
+    minWidth: 170,
+    align: "right",
+  },
 ];
 
 function createData(name, weapon, skeet, trap) {
