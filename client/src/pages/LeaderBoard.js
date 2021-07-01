@@ -53,6 +53,7 @@ const rows = [
 
 const useStyles = makeStyles({
   root: {
+    backgroundColor: "#708238",
     width: "100%",
   },
   container: {

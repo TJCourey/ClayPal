@@ -73,7 +73,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     width: "100%",
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: "#708238",
   },
 }));
 
@@ -104,6 +104,7 @@ export default function TrapScore() {
 
   return (
     <Container className="trapForm">
+      <h1> LEADERBOARD</h1>
       <div className={classes.root}>
         <AppBar position="static" color="default">
           <Tabs

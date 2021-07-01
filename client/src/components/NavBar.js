@@ -34,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
   appBar: {
     backgroundColor: "#113b08",
+    color: "#ffa500",
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
@@ -49,6 +50,7 @@ const useStyles = makeStyles((theme) => ({
     }),
   },
   menuButton: {
+    backgroundColor: "#abbf6d",
     marginRight: 36,
   },
   hide: {
@@ -61,6 +63,7 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerOpen: {
     backgroundColor: "#708238",
+    color: "white",
     width: drawerWidth,
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
@@ -80,6 +83,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   toolbar: {
+    backgroundColor: "#abbf6d",
     display: "flex",
     alignItems: "center",
     justifyContent: "flex-end",
