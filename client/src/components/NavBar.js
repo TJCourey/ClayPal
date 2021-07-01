@@ -26,6 +26,8 @@ import { GiSilverBullet } from "react-icons/gi";
 import { GoSearch } from "react-icons/go";
 import { Link } from "react-router-dom";
 
+import Auth from "../utils/auth";
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -161,35 +163,38 @@ export default function MiniDrawer() {
         </div>
         <Divider />
         <List>
-          {[
-            "Home",
-            "Leaderboard",
-            "Start Skeet",
-            "Start Trap",
-            "Login/Logout",
-          ].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                <Link to="/signup">
-                  {index === 0 ? <DashboardRoundedIcon /> : <> </>}
-                </Link>
-                <Link to="/leaderboard">
-                  {index === 1 ? <StarIcon /> : <> </>}
-                </Link>
-                <Link to="/skeetscore">
-                  {index === 2 ? <PlayCircleFilledWhiteIcon /> : <> </>}
-                </Link>
-                <Link to="/trapscore">
-                  {index === 3 ? <PlayCircleOutlineIcon /> : <> </>}
-                </Link>
-                <Link to="/login">
-                  {index === 4 ? <PersonSharpIcon /> : <> </>}
-                </Link>
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
+          <ListItem>
+            <ListItemIcon>
+              {Auth.loggedIn() ? (
+                <>
+                  <Link to="/leaderboard">
+                    <StarIcon />
+                  </Link>
+
+                  <Link to="/skeetscore">
+                    <PlayCircleFilledWhiteIcon />
+                  </Link>
+
+                  <Link to="/trapscore">
+                    <PlayCircleOutlineIcon />
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <Link to="/signup">
+                    <DashboardRoundedIcon />
+                  </Link>
+
+                  <Link to="/login">
+                    <PersonSharpIcon />
+                  </Link>
+                </>
+              )}
+            </ListItemIcon>
+            <ListItemText />
+          </ListItem>
         </List>
+        ;
         <Divider />
         <List>
           {["Gun Safety", "Buy Ammo", "Where to Shoot"].map((text, index) => (

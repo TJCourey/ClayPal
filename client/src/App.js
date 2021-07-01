@@ -50,10 +50,10 @@ function App() {
           <MiniDrawer />
           <Switch>
             <Route exact path="/">
-              <Main />{" "}
+              <Main />
             </Route>
             <Route exact path="/leaderboard">
-              <StickyHeadTable />{" "}
+              <StickyHeadTable />
             </Route>
             <Route exact path="/login">
               <Login />
