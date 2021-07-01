@@ -1,4 +1,4 @@
-import Home from "./components/Home.js";
+import Main from "./components/Main.js";
 import MiniDrawer from "./components/NavBar.js";
 import StickyHeadTable from "./pages/LeaderBoard";
 import Login from "./pages/Login";
@@ -18,7 +18,7 @@ function App() {
         <MiniDrawer />
         <Switch>
           <Route exact path="/">
-            <Home />{" "}
+            <Main />{" "}
           </Route>
           <Route exact path="/leaderboard">
             <StickyHeadTable />{" "}
