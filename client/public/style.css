@@ -1,14 +1,28 @@
-.MuiPaper-rounded {
-  border-radius: 4px;
-  margin-top: 20%;
+.scoreTitle {
+  margin-top: 5%;
 }
-
+.rulesContainer {
+  margin-top: 10%;
+}
 .skeetForm {
   border-radius: 4px;
-  margin-top: 10%;
+  margin-top: 5%;
 }
 
 .trapForm {
   border-radius: 4px;
-  margin-top: 10%;
+  margin-top: 5%;
 }
+
+html {
+  background-color: #abbf6d;
+}
+
+.App {
+  background-color: #abbf6d;
+}
+
+h1 {
+  text-align: center;
+  color: #ffc04d;
+  font-size: 400%;
