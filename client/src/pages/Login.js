@@ -88,10 +88,15 @@ const Login = (props) => {
     event.preventDefault();
     console.log(formState);
     try {
-      const { data } = await login({
+      const { data, error } = await login({
         variables: { ...formState },
       });
 
+      if (error) {
+        console.log(error);
+      }
+
+      console.log(data);
       Auth.login(data.login.token);
     } catch (e) {
       console.error(e);
@@ -118,62 +123,76 @@ const Login = (props) => {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <form onSubmit={handleFormSubmit} className={classes.form} noValidate>
-            <TextField
-              value={formState.email}
-              onChange={handleChange}
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-            />
-            <TextField
-              value={formState.password}
-              onChange={handleChange}
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
+
+          {error ? <p>{JSON.stringify(error)}</p> : null}
+
+          {data ? (
+            <p>
+              Success! You may now head{" "}
+              <Link to="/">back to the homepage.</Link>
+            </p>
+          ) : (
+            <form
+              onSubmit={handleFormSubmit}
+              className={classes.form}
+              noValidate
             >
-              Sign In
-            </Button>
-            <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
+              <TextField
+                value={formState.email}
+                onChange={handleChange}
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                autoFocus
+              />
+              <TextField
+                value={formState.password}
+                onChange={handleChange}
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+              />
+              <FormControlLabel
+                control={<Checkbox value="remember" color="primary" />}
+                label="Remember me"
+              />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+              >
+                Sign In
+              </Button>
+              <Grid container>
+                <Grid item xs>
+                  <Link href="#" variant="body2">
+                    Forgot password?
+                  </Link>
+                </Grid>
+                <Grid item>
+                  <Link to="/signup" variant="body2">
+                    {"Don't have an account? Sign Up"}
+                  </Link>
+                </Grid>
               </Grid>
-              <Grid item>
-                <Link to="/signup" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </Grid>
-            </Grid>
-            <Box mt={5}>
-              <Copyright />
-            </Box>
-          </form>
+              <Box mt={5}>
+                <Copyright />
+              </Box>
+            </form>
+          )}
         </div>
       </Grid>
     </Grid>
