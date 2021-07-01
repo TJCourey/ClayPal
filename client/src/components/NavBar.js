@@ -168,16 +168,17 @@ export default function MiniDrawer() {
               {Auth.loggedIn() ? (
                 <>
                   <Link to="/leaderboard">
-                    <StarIcon />
+                    <StarIcon /> Leaderboard
                   </Link>
 
                   <Link to="/skeetscore">
-                    <PlayCircleFilledWhiteIcon />
+                    <PlayCircleFilledWhiteIcon /> Skeet Score
                   </Link>
 
                   <Link to="/trapscore">
-                    <PlayCircleOutlineIcon />
+                    <PlayCircleOutlineIcon /> Trap Score
                   </Link>
+                  {/* need to add logout button when user is logged in */}
                 </>
               ) : (
                 <>
@@ -194,7 +195,7 @@ export default function MiniDrawer() {
             <ListItemText />
           </ListItem>
         </List>
-        ;
+
         <Divider />
         <List>
           {["Gun Safety", "Buy Ammo", "Where to Shoot"].map((text, index) => (
