@@ -87,7 +87,7 @@ const Signup = () => {
     },
   }));
 
-  function SignUp() {
+  function SignUpForm() {
     const classes = useStyles();
 
     return (
