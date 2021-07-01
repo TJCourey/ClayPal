@@ -37,7 +37,7 @@ const columns = [
     align: "right",
   },
 ];
-
+//Fixed overall score by adding it as an object above
 function createData(name, weapon, skeet, trap) {
   const overallScore = skeet + trap;
   return { name, weapon, skeet, trap, overallScore };
