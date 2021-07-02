@@ -130,7 +130,7 @@ export default function SkeetScore() {
         ))}
       </TabPanel>
     );
-    console.log(tab.id);
+    // console.log(tab.id);
   };
 
   return (
