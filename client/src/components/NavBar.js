@@ -15,7 +15,7 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import logo from "./img/logo.png";
+// import logo from "./img/logo.png";
 import DashboardRoundedIcon from "@material-ui/icons/DashboardRounded";
 import StarIcon from "@material-ui/icons/Star";
 import PlayCircleFilledWhiteIcon from "@material-ui/icons/PlayCircleFilledWhite";
