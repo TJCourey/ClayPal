@@ -82,8 +82,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-let overallScore = [0];
-
 export default function TrapScore() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
