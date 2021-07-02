@@ -29,6 +29,7 @@ const skeetColumns = [
   {
     id: "skeet",
     minWidth: 170,
+    label: "Skeet",
     align: "right",
   },
 ];
