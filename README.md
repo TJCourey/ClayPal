@@ -1,6 +1,7 @@
 # ClayPal
 
 ![Screenshot](client/src/components/img/cpscreenshoot.png)
+[ClayPal Deployed]()
 
 Using this Full Stack application, a user can interact with our ClayPal application to:
 
@@ -23,6 +24,7 @@ Using this Full Stack application, a user can interact with our ClayPal applicat
 # Installation
 
 No installation necessary, visit our website here:
+[ClayPal]()
 
 # Technologies
 
