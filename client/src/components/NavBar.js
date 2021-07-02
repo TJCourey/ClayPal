@@ -101,6 +101,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const logout = () => {
+  localStorage.clear();
+  window.location.href = "/login";
+};
+
 const renderNavItems = (text, index) => {
   let result = null;
   if (Auth.loggedIn()) {
@@ -143,7 +148,18 @@ const renderNavItems = (text, index) => {
         );
 
         break;
-      // TODO: add in logout logic below
+
+      case 4:
+        result = (
+          <Link to="/login" onClick={logout}>
+            <Box display={"flex"}>
+              <ListItemIcon>
+                <PersonSharpIcon />
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </Box>
+          </Link>
+        );
 
       default:
         break;
