@@ -21,7 +21,7 @@ import { useQuery } from "@apollo/react-hooks";
 const skeetColumns = [
   { id: "name", label: "Name", minWidth: 170 },
   {
-    id: "weapon",
+    id: "skeetWeapon",
     label: "Weapon",
     minWidth: 170,
     align: "right",
@@ -36,7 +36,7 @@ const skeetColumns = [
 const trapColumns = [
   { id: "name", label: "Name", minWidth: 170 },
   {
-    id: "weapon",
+    id: "trapWeapon",
     label: "Weapon",
     minWidth: 170,
     align: "right",
@@ -68,14 +68,17 @@ const overallColumns = [
 
 //Fixed overall score by adding it as an object above
 function createData(user) {
+  const name = user.username;
+  const skeetWeapon = user.skeetScore[0].weapon;
   const skeet = user.skeetScore[0].station.reduce((a, b) => {
     return Number(a) + Number(b);
   }, 0);
+  const trapWeapon = user.trapScore[0].weapon;
   const trap = user.trapScore[0].station.reduce((a, b) => {
     return Number(a) + Number(b);
   }, 0);
   const overallScore = skeet + trap;
-  return { user, skeet, trap, overallScore };
+  return { name, skeet, trap, overallScore, skeetWeapon, trapWeapon };
 }
 // We are going to need data from the database here.
 // function rows() {
