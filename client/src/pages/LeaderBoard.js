@@ -74,9 +74,7 @@ function createSkeetData(user) {
     }
     return skeetRows;
   });
-  console.log(skeetRows);
   skeetRows.sort((a, b) => (a.score > b.score ? -1 : 1));
-  console.log(skeetRows);
   return skeetRows;
 }
 function createTrapData(user) {
@@ -89,46 +87,9 @@ function createTrapData(user) {
     }
     return trapRows;
   });
-  console.log(trapRows);
   trapRows.sort((a, b) => (a.score > b.score ? -1 : 1));
-  console.log(trapRows);
   return trapRows;
 }
-// const name = user.username;
-// const skeetWeapon = user.skeetScore[i].weapon;
-// const skeet = user.skeetScore[i].overallScore;
-// const trapWeapon = user.trapScore[i].weapon;
-// const trap = user.trapScore[i].overallScore;
-// const overallScore = skeet + trap;
-// return { name, skeet, trap, overallScore, skeetWeapon, trapWeapon };
-//
-
-// function createRows(user) {
-//   // create array
-//   returnRows = [];
-//   // array should contain (username, score, weapon) for each round of trap and skeet
-//   user.skeetScore.map(score);
-//   // trap and skeet are located at user.skeetscore and user.trapscore
-// }
-
-// function createData(score) {
-//   const name = score.shooter;
-//   const skeetWeapon = score.weapon;
-//   const skeet = score.overallScore;
-//   return { name, skeetWeapon, skeet };
-// }
-//Fixed overall score by adding it as an object above
-// function createData(name, weapon, skeet, trap) {
-//   const overallScore = skeet + trap;
-//   return { name, weapon, skeet, trap, overallScore };
-// }
-// We are going to need data from the database here.
-// const rows = [
-//   createData("Jack", "Mossberg 500", 15, 18),
-//   createData("Josh", "Remington 870", 19, 13),
-//   createData("Nick", "Tri-star Setter", 20, 18),
-//   createData("TJ", "CZ Drake", 19, 21),
-// ];
 
 const useStyles = makeStyles({
   root: {
