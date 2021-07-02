@@ -15,18 +15,19 @@ import Tab from "@material-ui/core/Tab";
 import PropTypes from "prop-types";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
+import { QUERY_USER } from "../utils/queries";
+import { useQuery } from "@apollo/client";
 
 const skeetColumns = [
   { id: "name", label: "Name", minWidth: 170 },
   {
-    id: "weapon",
+    id: "skeetWeapon",
     label: "Weapon",
     minWidth: 170,
     align: "right",
   },
   {
     id: "skeet",
-    label: "Skeet",
     minWidth: 170,
     align: "right",
   },
@@ -34,7 +35,7 @@ const skeetColumns = [
 const trapColumns = [
   { id: "name", label: "Name", minWidth: 170 },
   {
-    id: "weapon",
+    id: "trapWeapon",
     label: "Weapon",
     minWidth: 170,
     align: "right",
@@ -61,18 +62,32 @@ const overallColumns = [
     align: "right",
   },
 ];
-//Fixed overall score by adding it as an object above
-function createData(name, weapon, skeet, trap) {
+function createData(user) {
+  const name = user.username;
+  const skeetWeapon = user.skeetScore[0].weapon;
+  const skeet = user.skeetScore[0].station.reduce((a, b) => {
+    return Number(a) + Number(b);
+  }, 0);
+  const trapWeapon = user.trapScore[0].weapon;
+  const trap = user.trapScore[0].station.reduce((a, b) => {
+    return Number(a) + Number(b);
+  }, 0);
   const overallScore = skeet + trap;
-  return { name, weapon, skeet, trap, overallScore };
+  return { name, skeet, trap, overallScore, skeetWeapon, trapWeapon };
 }
+
+//Fixed overall score by adding it as an object above
+// function createData(name, weapon, skeet, trap) {
+//   const overallScore = skeet + trap;
+//   return { name, weapon, skeet, trap, overallScore };
+// }
 // We are going to need data from the database here.
-const rows = [
-  createData("Jack", "Mossberg 500", 15, 18),
-  createData("Josh", "Remington 870", 19, 13),
-  createData("Nick", "Tri-star Setter", 20, 18),
-  createData("TJ", "CZ Drake", 19, 21),
-];
+// const rows = [
+//   createData("Jack", "Mossberg 500", 15, 18),
+//   createData("Josh", "Remington 870", 19, 13),
+//   createData("Nick", "Tri-star Setter", 20, 18),
+//   createData("TJ", "CZ Drake", 19, 21),
+// ];
 
 const useStyles = makeStyles({
   root: {
@@ -114,6 +129,12 @@ function a11yProps(index) {
   };
 }
 export default function StickyHeadTable() {
+  const { data } = useQuery(QUERY_USER);
+  console.log(data);
+  const users = data?.users || [];
+  console.log(users);
+  const rows = users.map(createData);
+
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);

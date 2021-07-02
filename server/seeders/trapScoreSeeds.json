@@ -18,9 +18,21 @@
     "weapon": "Tri-Star Setter"
   },
   {
+    "shooter": "Nick",
+    "overallScore": "19",
+    "station": [5, 3, 3, 3, 5],
+    "weapon": "CZ Drake"
+  },
+  {
+    "shooter": "Josh",
+    "overallScore": "22",
+    "station": [5, 4, 4, 4, 5],
+    "weapon": "CZ Drake"
+  },
+  {
     "shooter": "TJ",
-    "overallScore": "21",
-    "station": [5, 4, 4, 3, 5],
+    "overallScore": "24",
+    "station": [5, 4, 5, 5, 5],
     "weapon": "CZ Drake"
   }
 ]

@@ -36,11 +36,8 @@ const trapRules = [
     maxPoints: 5,
   },
 ];
-const addRules = [
-  "A round of trap consists of 25 targets, with 5 shots at each station or post, which is 16 yards from the back of the trap house. Trap is shot in squads of up to five shooters. They move from station to station until the shooter has shot from each station.",
-  "Any type of shotgun may be used – single barrel, double barrel, pump or semi-automatic; and any gauge not larger than 12 gauge. A 12 gauge is the most popular. Any brand of shells is permissible, but nothing larger than size #7-½ (no number lower than #7-½) shot should ever be used.",
-];
-
+const addRules =
+  "A round of trap consists of 25 targets, with 5 shots at each station or post, which is 16 yards from the back of the trap house. Trap is shot in squads of up to five shooters. They move from station to station until the shooter has shot from each station.";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -111,11 +108,7 @@ export default function TrapScore() {
     <>
       <Container className="rulesContainer">
         <h1>Trap Shooting</h1>
-        <h3>
-          {addRules[0]}
-          <br></br>
-          {addRules[1]}
-        </h3>
+        <h3>{addRules}</h3>
       </Container>
       <Container className="trapForm">
         <div className={classes.root}>
