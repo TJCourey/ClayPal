@@ -101,7 +101,7 @@ export default function TrapScore() {
 
     try {
       const { data } = await addTrapScore({
-        variables: { station, weapon, shooter, overallScore },
+        variables: { overallScore },
       });
       window.location.reload();
     } catch (err) {
@@ -138,8 +138,9 @@ export default function TrapScore() {
         <h1>Trap Shooting</h1>
         <h3>{addRules}</h3>
       </Container>
-
+      
       <Container className="trapForm" onSubmit={handleFormSubmit}>
+      
         <div className={classes.root}>
           <AppBar position="static" color="default">
             <Tabs
