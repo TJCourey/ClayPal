@@ -28,6 +28,7 @@ import { Link } from "react-router-dom";
 import Box from "@material-ui/core/Box";
 
 import Auth from "../utils/auth";
+// import { logout } from "../utils/auth";
 import { SwapVerticalCircleSharp } from "@material-ui/icons";
 
 const drawerWidth = 240;
@@ -103,6 +104,8 @@ const useStyles = makeStyles((theme) => ({
 
 const logout = () => {
   localStorage.clear();
+  localStorage.removeItem("id_token");
+  // window.location.reload();
   window.location.href = "/login";
 };
 
@@ -168,7 +171,7 @@ const renderNavItems = (text, index) => {
     switch (index) {
       case 4:
         result = (
-          <Link to="/signup">
+          <Link to="/login">
             <Box display={"flex"}>
               <ListItemIcon>
                 <DashboardRoundedIcon />
@@ -180,7 +183,7 @@ const renderNavItems = (text, index) => {
         break;
       case 0:
         result = (
-          <Link to="/login">
+          <Link to="/signup">
             <Box display={"flex"}>
               <ListItemIcon>
                 <PersonSharpIcon />
