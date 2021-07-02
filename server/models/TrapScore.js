@@ -10,17 +10,14 @@ const trapScoreSchema = new Schema({
   station: [
     {
       type: String,
-      required: true,
     },
   ],
 
   weapon: {
     type: String,
-    required: true,
   },
   shooter: {
     type: String,
-    required: true,
   },
 
   date: {
