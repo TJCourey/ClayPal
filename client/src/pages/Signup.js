@@ -73,6 +73,11 @@ const Signup = () => {
     });
   };
 
+  const login = (idToken) => {
+    localStorage.setItem("id_token", idToken);
+    window.location.assign("/");
+  };
+
   // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -165,6 +170,7 @@ const Signup = () => {
             </Grid>
           </Grid>
           <Button
+            onClick={login}
             type="submit"
             fullWidth
             variant="contained"
