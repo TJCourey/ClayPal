@@ -30,6 +30,7 @@ class AuthService {
 
   logout() {
     localStorage.removeItem("id_token");
+    window.location.href = "/login";
     window.location.reload();
   }
 }
