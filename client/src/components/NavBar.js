@@ -15,7 +15,10 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
+<<<<<<< HEAD
 // import logo from "./img/logo.png";
+=======
+>>>>>>> 4c9ce2b5d3e8ffb584bb9c3dc44e641e0fcdeab2
 import DashboardRoundedIcon from "@material-ui/icons/DashboardRounded";
 import StarIcon from "@material-ui/icons/Star";
 import PlayCircleFilledWhiteIcon from "@material-ui/icons/PlayCircleFilledWhite";
