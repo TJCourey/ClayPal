@@ -340,54 +340,7 @@ export default function MiniDrawer() {
         <List>
           {["Gun Safety", "Buy Ammo", "Where to Shoot"].map((text, index) => (
             <ListItem button key={text}>
-<<<<<<< HEAD
-              <ListItemIcon>
-                {index === 0 ? (
-                  <a
-                    rel="NRAsafety"
-                    href="https://gunsafetyrules.nra.org/"
-                    alt="NRA Safety"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <AiOutlineSafetyCertificate />{" "}
-                  </a>
-                ) : (
-                  <> </>
-                )}
-                {index === 1 ? (
-                  <a
-                    rel="Ammo"
-                    href="https://www.freedommunitions.com/"
-                    alt="Buy Ammo"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {" "}
-                    <GiSilverBullet />{" "}
-                  </a>
-                ) : (
-                  <> </>
-                )}
-                {index === 2 ? (
-                  <a
-                    rel="Wheretoshoot"
-                    href="https://www.wheretoshoot.org/"
-                    alt="Where to shoot"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {" "}
-                    <GoSearch />{" "}
-                  </a>
-                ) : (
-                  <> </>
-                )}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-=======
               {renderLinkItems(text, index)}
->>>>>>> main
             </ListItem>
           ))}
         </List>
