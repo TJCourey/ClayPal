@@ -25,6 +25,11 @@ import { AiOutlineSafetyCertificate } from "react-icons/ai";
 import { GiSilverBullet } from "react-icons/gi";
 import { GoSearch } from "react-icons/go";
 import { Link } from "react-router-dom";
+import Box from "@material-ui/core/Box";
+
+import Auth from "../utils/auth";
+// import { logout } from "../utils/auth";
+import { SwapVerticalCircleSharp } from "@material-ui/icons";
 
 const drawerWidth = 240;
 
@@ -96,6 +101,164 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(3),
   },
 }));
+
+const logout = () => {
+  localStorage.clear();
+  localStorage.removeItem("id_token");
+  // window.location.reload();
+  window.location.href = "/login";
+};
+
+const renderNavItems = (text, index) => {
+  let result = null;
+  if (Auth.loggedIn()) {
+    // console.log("Auth.loggedIn()", Auth.loggedIn(), "index", index);
+    switch (index) {
+      case 1:
+        result = (
+          <Link to="/leaderboard">
+            <Box display={"flex"}>
+              <ListItemIcon>
+                <StarIcon />
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </Box>
+          </Link>
+        );
+        break;
+      case 2:
+        result = (
+          <Link to="/skeetscore">
+            <Box display={"flex"}>
+              <ListItemIcon>
+                <PlayCircleFilledWhiteIcon />
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </Box>
+          </Link>
+        );
+        break;
+      case 3:
+        result = (
+          <Link to="/trapscore">
+            <Box display={"flex"}>
+              <ListItemIcon>
+                <PlayCircleOutlineIcon />
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </Box>
+          </Link>
+        );
+
+        break;
+
+      case 4:
+        result = (
+          <Link to="/login" onClick={logout}>
+            <Box display={"flex"}>
+              <ListItemIcon>
+                <PersonSharpIcon />
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </Box>
+          </Link>
+        );
+
+      default:
+        break;
+    }
+  } else {
+    switch (index) {
+      case 4:
+        result = (
+          <Link to="/login">
+            <Box display={"flex"}>
+              <ListItemIcon>
+                <DashboardRoundedIcon />
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </Box>
+          </Link>
+        );
+        break;
+      case 0:
+        result = (
+          <Link to="/signup">
+            <Box display={"flex"}>
+              <ListItemIcon>
+                <PersonSharpIcon />
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </Box>
+          </Link>
+        );
+        break;
+
+      default:
+        break;
+    }
+  }
+  return result;
+};
+
+const renderLinkItems = (text, index) => {
+  let result = null;
+  switch (index) {
+    case 0:
+      result = (
+        <a
+          rel="NRAsafety"
+          href="https://gunsafetyrules.nra.org/"
+          alt="NRA Safety"
+          target="_blank"
+        >
+          <Box display={"flex"}>
+            <ListItemIcon>
+              <AiOutlineSafetyCertificate />
+            </ListItemIcon>
+
+            <ListItemText primary={text} />
+          </Box>
+        </a>
+      );
+      break;
+    case 1:
+      result = (
+        <a
+          rel="Ammo"
+          href="https://www.freedommunitions.com/"
+          alt="Buy Ammo"
+          target="_blank"
+        >
+          <Box display={"flex"}>
+            <ListItemIcon>
+              <GiSilverBullet />
+            </ListItemIcon>
+            <ListItemText primary={text} />
+          </Box>
+        </a>
+      );
+      break;
+    case 2:
+      result = (
+        <a
+          rel="Wheretoshoot"
+          href="https://www.wheretoshoot.org/"
+          alt="Where to shoot"
+          target="_blank"
+        >
+          <Box display={"flex"}>
+            <ListItemIcon>
+              <GoSearch />
+            </ListItemIcon>
+            <ListItemText primary={text} />
+          </Box>
+        </a>
+      );
+      break;
+  }
+  return result;
+};
 
 export default function MiniDrawer() {
   const classes = useStyles();
@@ -169,24 +332,7 @@ export default function MiniDrawer() {
             "Login/Logout",
           ].map((text, index) => (
             <ListItem button key={text}>
-              <ListItemIcon>
-                <Link to="/signup">
-                  {index === 0 ? <DashboardRoundedIcon /> : <> </>}
-                </Link>
-                <Link to="/leaderboard">
-                  {index === 1 ? <StarIcon /> : <> </>}
-                </Link>
-                <Link to="/skeetscore">
-                  {index === 2 ? <PlayCircleFilledWhiteIcon /> : <> </>}
-                </Link>
-                <Link to="/trapscore">
-                  {index === 3 ? <PlayCircleOutlineIcon /> : <> </>}
-                </Link>
-                <Link to="/login">
-                  {index === 4 ? <PersonSharpIcon /> : <> </>}
-                </Link>
-              </ListItemIcon>
-              <ListItemText primary={text} />
+              {renderNavItems(text, index)}
             </ListItem>
           ))}
         </List>
@@ -194,6 +340,7 @@ export default function MiniDrawer() {
         <List>
           {["Gun Safety", "Buy Ammo", "Where to Shoot"].map((text, index) => (
             <ListItem button key={text}>
+<<<<<<< HEAD
               <ListItemIcon>
                 {index === 0 ? (
                   <a
@@ -238,6 +385,9 @@ export default function MiniDrawer() {
                 )}
               </ListItemIcon>
               <ListItemText primary={text} />
+=======
+              {renderLinkItems(text, index)}
+>>>>>>> main
             </ListItem>
           ))}
         </List>
