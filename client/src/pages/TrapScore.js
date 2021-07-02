@@ -82,11 +82,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// const addTrap = () => {
-//   for (let i = 0; i < array.length; index++) {
-//     const elementInArray = array[i];
-//   }
-// };
+let overallScore = [0];
 
 export default function TrapScore() {
   const classes = useStyles();
