@@ -17,33 +17,34 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import { QUERY_USER } from "../utils/queries";
 import { useQuery } from "@apollo/client";
+import { CreateRows } from "../components/leaderboardHelpers/skeetscores";
 
 const skeetColumns = [
   { id: "name", label: "Name", minWidth: 170 },
+  // {
+  //   id: "skeetWeapon",
+  //   label: "Weapon",
+  //   minWidth: 170,
+  //   align: "right",
+  // },
   {
-    id: "skeetWeapon",
-    label: "Weapon",
+    id: "score",
     minWidth: 170,
-    align: "right",
-  },
-  {
-    id: "skeet",
-    minWidth: 170,
-    label: "Skeet",
+    label: "Skeet Score",
     align: "right",
   },
 ];
 const trapColumns = [
   { id: "name", label: "Name", minWidth: 170 },
+  // {
+  //   id: "trapWeapon",
+  //   label: "Weapon",
+  //   minWidth: 170,
+  //   align: "right",
+  // },
   {
-    id: "trapWeapon",
-    label: "Weapon",
-    minWidth: 170,
-    align: "right",
-  },
-  {
-    id: "trap",
-    label: "Trap",
+    id: "score",
+    label: "Trap Score",
     minWidth: 170,
     align: "right",
   },
@@ -63,20 +64,59 @@ const overallColumns = [
     align: "right",
   },
 ];
-function createData(user) {
-  const name = user.username;
-  const skeetWeapon = user.skeetScore[0].weapon;
-  const skeet = user.skeetScore[0].station.reduce((a, b) => {
-    return Number(a) + Number(b);
-  }, 0);
-  const trapWeapon = user.trapScore[0].weapon;
-  const trap = user.trapScore[0].station.reduce((a, b) => {
-    return Number(a) + Number(b);
-  }, 0);
-  const overallScore = skeet + trap;
-  return { name, skeet, trap, overallScore, skeetWeapon, trapWeapon };
+function createSkeetData(user) {
+  let skeetRows = [];
+  user.forEach((user) => {
+    const name = user.username;
+    for (let i = 0; i < user.skeetScore.length; i++) {
+      const score = user.skeetScore[i].overallScore;
+      skeetRows.push({ name, score });
+    }
+    return skeetRows;
+  });
+  console.log(skeetRows);
+  skeetRows.sort((a, b) => (a.score > b.score ? -1 : 1));
+  console.log(skeetRows);
+  return skeetRows;
 }
+function createTrapData(user) {
+  let trapRows = [];
+  user.forEach((user) => {
+    const name = user.username;
+    for (let i = 0; i < user.trapScore.length; i++) {
+      const score = user.trapScore[i].overallScore;
+      trapRows.push({ name, score });
+    }
+    return trapRows;
+  });
+  console.log(trapRows);
+  trapRows.sort((a, b) => (a.score > b.score ? -1 : 1));
+  console.log(trapRows);
+  return trapRows;
+}
+// const name = user.username;
+// const skeetWeapon = user.skeetScore[i].weapon;
+// const skeet = user.skeetScore[i].overallScore;
+// const trapWeapon = user.trapScore[i].weapon;
+// const trap = user.trapScore[i].overallScore;
+// const overallScore = skeet + trap;
+// return { name, skeet, trap, overallScore, skeetWeapon, trapWeapon };
+//
 
+// function createRows(user) {
+//   // create array
+//   returnRows = [];
+//   // array should contain (username, score, weapon) for each round of trap and skeet
+//   user.skeetScore.map(score);
+//   // trap and skeet are located at user.skeetscore and user.trapscore
+// }
+
+// function createData(score) {
+//   const name = score.shooter;
+//   const skeetWeapon = score.weapon;
+//   const skeet = score.overallScore;
+//   return { name, skeetWeapon, skeet };
+// }
 //Fixed overall score by adding it as an object above
 // function createData(name, weapon, skeet, trap) {
 //   const overallScore = skeet + trap;
@@ -130,17 +170,23 @@ function a11yProps(index) {
   };
 }
 export default function StickyHeadTable() {
-  const { data } = useQuery(QUERY_USER);
-  console.log(data);
-  const users = data?.users || [];
-  console.log(users);
-  const rows = users.map(createData);
-
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [value, setValue] = React.useState(0);
 
+  const { loading, data } = useQuery(QUERY_USER);
+  if (loading) {
+    return null;
+  }
+  console.log(data);
+  const users = data?.users || [];
+  console.log(users);
+  // const rows = users?.map(createData);
+  // users?.map(createData);
+  const rows = [];
+  const skeetRows = createSkeetData(users);
+  const trapRows = createTrapData(users);
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -193,7 +239,8 @@ export default function StickyHeadTable() {
                       </TableRow>
                     </TableHead>
                     <TableBody>
-                      {rows
+                      {/* <CreateRows user={users} /> */}
+                      {skeetRows
                         .slice(
                           page * rowsPerPage,
                           page * rowsPerPage + rowsPerPage
@@ -228,7 +275,7 @@ export default function StickyHeadTable() {
                 <TablePagination
                   rowsPerPageOptions={[10, 25, 100]}
                   component="div"
-                  count={rows.length}
+                  count={skeetRows.length}
                   rowsPerPage={rowsPerPage}
                   page={page}
                   onChangePage={handleChangePage}
@@ -259,7 +306,7 @@ export default function StickyHeadTable() {
                       </TableRow>
                     </TableHead>
                     <TableBody>
-                      {rows
+                      {trapRows
                         .slice(
                           page * rowsPerPage,
                           page * rowsPerPage + rowsPerPage
@@ -294,7 +341,7 @@ export default function StickyHeadTable() {
                 <TablePagination
                   rowsPerPageOptions={[10, 25, 100]}
                   component="div"
-                  count={rows.length}
+                  count={trapRows.length}
                   rowsPerPage={rowsPerPage}
                   page={page}
                   onChangePage={handleChangePage}
