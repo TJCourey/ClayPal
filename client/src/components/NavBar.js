@@ -115,10 +115,19 @@ const renderNavItems = (text, index) => {
     switch (index) {
       case 1:
         result = (
-          <Link to="/leaderboard">
+          <Link
+            to="/leaderboard"
+            style={{
+              textDecoration: "none",
+              color: "black",
+              marginTop: "15px",
+            }}
+          >
             <Box display={"flex"}>
               <ListItemIcon>
-                <StarIcon />
+                <StarIcon
+                  style={{ height: "30px", width: "30px", color: "#ffa500" }}
+                />
               </ListItemIcon>
               <ListItemText primary={text} />
             </Box>
@@ -127,10 +136,19 @@ const renderNavItems = (text, index) => {
         break;
       case 2:
         result = (
-          <Link to="/skeetscore">
+          <Link
+            to="/skeetscore"
+            style={{
+              textDecoration: "none",
+              color: "black",
+              marginTop: "15px",
+            }}
+          >
             <Box display={"flex"}>
               <ListItemIcon>
-                <PlayCircleFilledWhiteIcon />
+                <PlayCircleFilledWhiteIcon
+                  style={{ height: "30px", width: "30px", color: "#ffa500" }}
+                />
               </ListItemIcon>
               <ListItemText primary={text} />
             </Box>
@@ -139,10 +157,19 @@ const renderNavItems = (text, index) => {
         break;
       case 3:
         result = (
-          <Link to="/trapscore">
+          <Link
+            to="/trapscore"
+            style={{
+              textDecoration: "none",
+              color: "black",
+              marginTop: "15px",
+            }}
+          >
             <Box display={"flex"}>
               <ListItemIcon>
-                <PlayCircleOutlineIcon />
+                <PlayCircleOutlineIcon
+                  style={{ height: "30px", width: "30px", color: "#ffa500" }}
+                />
               </ListItemIcon>
               <ListItemText primary={text} />
             </Box>
@@ -153,10 +180,21 @@ const renderNavItems = (text, index) => {
 
       case 4:
         result = (
-          <Link to="/login" onClick={logout}>
+          <Link
+            to="/login"
+            onClick={logout}
+            style={{
+              textDecoration: "none",
+              color: "black",
+              marginTop: "15px",
+              marginBottom: "30px",
+            }}
+          >
             <Box display={"flex"}>
               <ListItemIcon>
-                <PersonSharpIcon />
+                <PersonSharpIcon
+                  style={{ height: "30px", width: "30px", color: "#ffa500" }}
+                />
               </ListItemIcon>
               <ListItemText primary={text} />
             </Box>
@@ -170,10 +208,19 @@ const renderNavItems = (text, index) => {
     switch (index) {
       case 4:
         result = (
-          <Link to="/login">
+          <Link
+            to="/login"
+            style={{
+              textDecoration: "none",
+              color: "black",
+              marginBottom: "35px",
+            }}
+          >
             <Box display={"flex"}>
               <ListItemIcon>
-                <DashboardRoundedIcon />
+                <DashboardRoundedIcon
+                  style={{ height: "30px", width: "30px", color: "#ffa500" }}
+                />
               </ListItemIcon>
               <ListItemText primary={text} />
             </Box>
@@ -182,10 +229,19 @@ const renderNavItems = (text, index) => {
         break;
       case 0:
         result = (
-          <Link to="/signup">
+          <Link
+            to="/signup"
+            style={{
+              textDecoration: "none",
+              color: "black",
+              marginTop: "35px",
+            }}
+          >
             <Box display={"flex"}>
               <ListItemIcon>
-                <PersonSharpIcon />
+                <PersonSharpIcon
+                  style={{ height: "30px", width: "30px", color: "#ffa500" }}
+                />
               </ListItemIcon>
               <ListItemText primary={text} />
             </Box>
@@ -206,6 +262,7 @@ const renderLinkItems = (text, index) => {
     case 0:
       result = (
         <a
+          style={{ textDecoration: "none", color: "black", marginTop: "75px" }}
           rel="NRAsafety"
           href="https://gunsafetyrules.nra.org/"
           alt="NRA Safety"
@@ -213,7 +270,9 @@ const renderLinkItems = (text, index) => {
         >
           <Box display={"flex"}>
             <ListItemIcon>
-              <AiOutlineSafetyCertificate />
+              <AiOutlineSafetyCertificate
+                style={{ height: "30px", width: "30px", color: "#ffa500" }}
+              />
             </ListItemIcon>
 
             <ListItemText primary={text} />
@@ -224,6 +283,7 @@ const renderLinkItems = (text, index) => {
     case 1:
       result = (
         <a
+          style={{ textDecoration: "none", color: "black", marginTop: "15px" }}
           rel="Ammo"
           href="https://www.freedommunitions.com/"
           alt="Buy Ammo"
@@ -231,7 +291,9 @@ const renderLinkItems = (text, index) => {
         >
           <Box display={"flex"}>
             <ListItemIcon>
-              <GiSilverBullet />
+              <GiSilverBullet
+                style={{ height: "30px", width: "30px", color: "#ffa500" }}
+              />
             </ListItemIcon>
             <ListItemText primary={text} />
           </Box>
@@ -241,6 +303,7 @@ const renderLinkItems = (text, index) => {
     case 2:
       result = (
         <a
+          style={{ textDecoration: "none", color: "black", marginTop: "15px" }}
           rel="Wheretoshoot"
           href="https://www.wheretoshoot.org/"
           alt="Where to shoot"
@@ -248,7 +311,9 @@ const renderLinkItems = (text, index) => {
         >
           <Box display={"flex"}>
             <ListItemIcon>
-              <GoSearch />
+              <GoSearch
+                style={{ height: "30px", width: "30px", color: "#ffa500" }}
+              />
             </ListItemIcon>
             <ListItemText primary={text} />
           </Box>

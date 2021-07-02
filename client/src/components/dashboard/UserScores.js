@@ -50,7 +50,7 @@ export default function UserScores() {
               position="left"
               style={{ textAnchor: "middle", fill: theme.palette.text.primary }}
             >
-              Sales ($)
+              {/* Sales ($) */}
             </Label>
           </YAxis>
           <Line

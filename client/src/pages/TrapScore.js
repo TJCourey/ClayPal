@@ -9,6 +9,9 @@ import Checkbox from "@material-ui/core/Checkbox";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import Box from "@material-ui/core/Box";
+import { useMutation } from "@apollo/client";
+import { ADD_TRAP_SCORE } from "../utils/mutations";
+
 const trapRules = [
   {
     id: 0,
@@ -82,9 +85,33 @@ const useStyles = makeStyles((theme) => ({
 export default function TrapScore() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
+  const [station, setStation] = React.useState("");
+  const [weapon, setWeapon] = React.useState("");
+  const [shooter, setShooter] = React.useState("");
+  const [overallScore, setOverallScore] = React.useState("");
+
+  const [addTrapScore, { error }] = useMutation(ADD_TRAP_SCORE);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+  };
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const { data } = await addTrapScore({
+        variables: { station, weapon, shooter, overallScore },
+      });
+      window.location.reload();
+    } catch (err) {
+      console.error(err);
+    }
+  };
+  //Foreach, click, adds 1 to the score
+  const handleClick = (event) => {
+    setOverallScore(Number(overallScore + 1));
+    console.log(overallScore);
   };
 
   const renderTab = (tab, i) => {
@@ -98,6 +125,7 @@ export default function TrapScore() {
           <Checkbox
             key={index}
             inputProps={{ "aria-label": "uncontrolled-checkbox" }}
+            onChange={() => handleClick()}
           />
         ))}
       </TabPanel>
@@ -110,7 +138,8 @@ export default function TrapScore() {
         <h1>Trap Shooting</h1>
         <h3>{addRules}</h3>
       </Container>
-      <Container className="trapForm">
+
+      <Container className="trapForm" onSubmit={handleFormSubmit}>
         <div className={classes.root}>
           <AppBar position="static" color="default">
             <Tabs
@@ -129,9 +158,13 @@ export default function TrapScore() {
               <Tab label="Station Five" {...a11yProps(4)} />
             </Tabs>
           </AppBar>
+
           {trapRules.map(renderTab)}
         </div>
-        <Button variant="contained">Default</Button>
+
+        <Button variant="contained" onSubmit={handleFormSubmit}>
+          Submit
+        </Button>
       </Container>
     </>
   );

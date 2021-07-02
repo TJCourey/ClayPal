@@ -9,6 +9,8 @@ import Checkbox from "@material-ui/core/Checkbox";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import AppBar from "@material-ui/core/AppBar";
+import { useMutation } from "@apollo/client";
+import { ADD_SKEET_SCORE } from "../utils/mutations";
 
 const skeetRules = [
   {
@@ -109,9 +111,18 @@ const useStyles = makeStyles((theme) => ({
 export default function SkeetScore() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
+  const [station, setStation] = React.useState("");
+  const [weapon, setWeapon] = React.useState("");
+  const [shooter, setShooter] = React.useState("");
+  const [overallScore, setOverallScore] = React.useState("");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+  };
+
+  const handleClick = (event) => {
+    setOverallScore(Number(overallScore + 1));
+    console.log(overallScore);
   };
 
   const renderTab = (tab, i) => {
@@ -126,11 +137,12 @@ export default function SkeetScore() {
           <Checkbox
             key={index}
             inputProps={{ "aria-label": "uncontrolled-checkbox" }}
+            onChange={() => handleClick()}
           />
         ))}
       </TabPanel>
     );
-    console.log(tab.id);
+    // console.log(tab.id);
   };
 
   return (
