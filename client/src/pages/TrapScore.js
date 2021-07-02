@@ -114,6 +114,11 @@ export default function TrapScore() {
       console.error(err);
     }
   };
+  //Foreach, click, adds 1 to the score
+  const handleClick = (event) => {
+    setOverallScore(Number(overallScore + 1));
+    console.log(overallScore);
+  };
 
   const renderTab = (tab, i) => {
     const n = tab.maxPoints;
@@ -126,7 +131,7 @@ export default function TrapScore() {
           <Checkbox
             key={index}
             inputProps={{ "aria-label": "uncontrolled-checkbox" }}
-            onChange={(event) => setOverallScore(event.target.value)}
+            onChange={() => handleClick()}
           />
         ))}
       </TabPanel>
@@ -160,7 +165,9 @@ export default function TrapScore() {
           </AppBar>
           {trapRules.map(renderTab)}
         </div>
-        <Button variant="contained">Submit</Button>
+        <Button variant="contained" onSubmit={handleFormSubmit}>
+          Submit
+        </Button>
       </Container>
     </>
   );
