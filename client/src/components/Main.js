@@ -3,15 +3,13 @@
 
 import Dashboard from "../pages/Dashboard";
 import Login from "../pages/Login";
-
-// import Dashboard from "../pages/Dashboard";
+import Auth from "../utils/auth";
 
 const Main = () => {
-  return (
-    <>
-      loggedIn ? <Dashboard /> : <Login />
-    </>
-  );
+  if (Auth.loggedIn()) {
+    return <Dashboard />;
+  }
+  return <Login />;
 };
 
 export default Main;
