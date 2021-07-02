@@ -1,4 +1,6 @@
-# Insomnia-Thai
+# ClayPal
+
+![Screenshot](client/src/components/img/cpscreenshoot.png)
 
 Using this Full Stack application, a user can interact with our ClayPal application to:
 
