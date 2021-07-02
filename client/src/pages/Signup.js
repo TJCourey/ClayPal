@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Signup = () => {
   const [formState, setFormState] = useState({
-    name: "",
+    username: "",
     email: "",
     password: "",
   });
@@ -71,6 +71,11 @@ const Signup = () => {
       ...formState,
       [name]: value,
     });
+  };
+
+  const login = (idToken) => {
+    localStorage.setItem("id_token", idToken);
+    window.location.assign("/");
   };
 
   // submit form
@@ -101,22 +106,26 @@ const Signup = () => {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate>
+        <form onSubmit={handleFormSubmit} className={classes.form} noValidate>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
-                autoComplete="fname"
-                name="firstName"
+                value={formState.username}
+                onChange={handleChange}
+                autoComplete="uname"
+                name="username"
                 variant="outlined"
                 required
                 fullWidth
                 id="firstName"
-                label="First Name"
+                label="User Name"
                 autoFocus
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
+            {/* <Grid item xs={12} sm={6}>
               <TextField
+                value={formState.lastName}
+                onChange={handleChange}
                 variant="outlined"
                 required
                 fullWidth
@@ -125,9 +134,11 @@ const Signup = () => {
                 name="lastName"
                 autoComplete="lname"
               />
-            </Grid>
+            </Grid> */}
             <Grid item xs={12}>
               <TextField
+                value={formState.email}
+                onChange={handleChange}
                 variant="outlined"
                 required
                 fullWidth
@@ -139,6 +150,8 @@ const Signup = () => {
             </Grid>
             <Grid item xs={12}>
               <TextField
+                value={formState.password}
+                onChange={handleChange}
                 variant="outlined"
                 required
                 fullWidth
@@ -157,6 +170,7 @@ const Signup = () => {
             </Grid>
           </Grid>
           <Button
+            onClick={login}
             type="submit"
             fullWidth
             variant="contained"
@@ -167,7 +181,7 @@ const Signup = () => {
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link to="/login" variant="body2">
                 Already have an account? Sign in
               </Link>
             </Grid>

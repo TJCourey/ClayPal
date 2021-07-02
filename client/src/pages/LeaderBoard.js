@@ -132,7 +132,7 @@ export default function StickyHeadTable() {
 
   return (
     <>
-      <Container>
+      <Container className="leaderTabs">
         <div className={classes.root}>
           <AppBar position="static" color="default">
             <Tabs
@@ -281,7 +281,7 @@ export default function StickyHeadTable() {
               </Paper>
             </Container>
           </TabPanel>
-          <TabPanel value={value} index={1}>
+          <TabPanel value={value} index={2}>
             <Container className="scoreTitle">
               <h1>Overall Score</h1>
             </Container>

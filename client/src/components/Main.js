@@ -1,4 +1,7 @@
-// main will show the login form if not logged in if logged in will show the dashboard
+// if logged in render dashboard if not render sign in page
+// dashboard.js and login page should render in return.
+
+// import Dashboard from "../pages/Dashboard";
 
 const Main = () => {
   return (
@@ -8,6 +11,7 @@ const Main = () => {
       <h1> hello world </h1>
       <h1> hello world </h1>
     </div>
+    // <Dashboard />
   );
 };
 
