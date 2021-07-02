@@ -82,12 +82,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// const addTrap = () => {
-//   for (let i = 0; i < array.length; index++) {
-//     const elementInArray = array[i];
-//   }
-// };
-
 export default function TrapScore() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
@@ -144,7 +138,9 @@ export default function TrapScore() {
         <h1>Trap Shooting</h1>
         <h3>{addRules}</h3>
       </Container>
-      <Container className="trapForm">
+      
+      <Container className="trapForm" onSubmit={handleFormSubmit}>
+      
         <div className={classes.root}>
           <AppBar position="static" color="default">
             <Tabs
@@ -163,9 +159,11 @@ export default function TrapScore() {
               <Tab label="Station Five" {...a11yProps(4)} />
             </Tabs>
           </AppBar>
+
           {trapRules.map(renderTab)}
         </div>
-        <Button variant="contained" onClick={handleFormSubmit}>
+
+        <Button variant="contained" onSubmit={handleFormSubmit}>
           Submit
         </Button>
       </Container>
