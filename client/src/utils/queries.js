@@ -16,6 +16,7 @@ export const QUERY_USER = gql`
       trapScore {
         _id
         overallScore
+        station
         weapon
         date
       }
