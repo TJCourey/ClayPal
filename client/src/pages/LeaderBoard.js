@@ -8,7 +8,7 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TablePagination from "@material-ui/core/TablePagination";
 import TableRow from "@material-ui/core/TableRow";
-import { Grid, Container } from "@material-ui/core/";
+import { Container } from "@material-ui/core/";
 import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
@@ -67,9 +67,15 @@ const overallColumns = [
 // const { data } = useQuery(QUERY_USER);
 
 //Fixed overall score by adding it as an object above
-function createData(name, weapon, skeet, trap) {
+function createData(user) {
+  const skeet = user.skeetScore[0].station.reduce((a, b) => {
+    return Number(a) + Number(b);
+  }, 0);
+  const trap = user.trapScore[0].station.reduce((a, b) => {
+    return Number(a) + Number(b);
+  }, 0);
   const overallScore = skeet + trap;
-  return { name, weapon, skeet, trap, overallScore };
+  return { user, skeet, trap, overallScore };
 }
 // We are going to need data from the database here.
 // function rows() {
@@ -121,9 +127,14 @@ function a11yProps(index) {
   };
 }
 export default function StickyHeadTable() {
-  const { users } = useQuery(QUERY_USER);
+  const { data } = useQuery(QUERY_USER);
+  console.log(data);
+  const users = data?.users || [];
+  // const { users } = useQuery(QUERY_USER);
+  // console.log(users);
   console.log(users);
   const rows = users.map(createData);
+
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);

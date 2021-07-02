@@ -9,7 +9,7 @@ const skeetScoreSchema = new Schema({
 
   station: [
     {
-      type: String,
+      type: Number,
       required: true,
     },
   ],
