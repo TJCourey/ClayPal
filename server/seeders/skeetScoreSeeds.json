@@ -13,14 +13,26 @@
   },
   {
     "shooter": "Nick",
+    "overallScore": "22",
+    "station": [4, 4, 2, 2, 2, 4, 3, 2],
+    "weapon": "Tri-Star Setter"
+  },
+  {
+    "shooter": "Josh",
+    "overallScore": "20",
+    "station": [2, 3, 2, 2, 2, 3, 3, 2],
+    "weapon": "Tri-Star Setter"
+  },
+  {
+    "shooter": "Nick",
     "overallScore": "20",
     "station": [4, 3, 2, 2, 2, 3, 3, 2],
     "weapon": "Tri-Star Setter"
   },
   {
     "shooter": "TJ",
-    "overallScore": "19",
-    "station": [4, 4, 2, 1, 1, 2, 4, 1],
+    "overallScore": "23",
+    "station": [4, 4, 2, 2, 2, 3, 4, 2],
     "weapon": "CZ Drake"
   }
 ]
