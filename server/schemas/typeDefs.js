@@ -43,17 +43,12 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addSkeetScore(
-      station: [String!]
-      weapon: String!
-      shooter: String!
+      station: [String]
+      weapon: String
+      shooter: String
       overallScore: String!
     ): User
-    addTrapScore(
-      station: [String!]
-      weapon: String!
-      shooter: String!
-      overallScore: String!
-    ): User
+    addTrapScore(overallScore: String!): User
   }
 `;
 
