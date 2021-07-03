@@ -188,222 +188,231 @@ export default function StickyHeadTable() {
   return (
     <>
       <Container className="leaderTabs">
-        <div className={classes.root}>
-          <AppBar position="static" color="default">
-            <Tabs
-              value={value}
-              onChange={handleChange}
-              indicatorColor="primary"
-              textColor="primary"
-              variant="scrollable"
-              scrollButtons="auto"
-              aria-label="scrollable auto tabs example"
-            >
-              <Tab label="Skeet Score" {...a11yProps(0)} />
-              <Tab label="Trap Score" {...a11yProps(1)} />
-              <Tab label="Overall Score" {...a11yProps(2)} />
-            </Tabs>
-          </AppBar>
-          <TabPanel value={value} index={0}>
-            <Container className="scoreTitle">
-              <h1>Skeet Scores</h1>
-            </Container>
-            <Container>
-              <Paper className={classes.root}>
-                <TableContainer className={classes.container}>
-                  <Table stickyHeader aria-label="sticky table">
-                    <TableHead>
-                      <TableRow>
-                        {skeetColumns.map((column) => (
-                          <TableCell
-                            key={column.id}
-                            align={column.align}
-                            style={{ minWidth: column.minWidth }}
-                          >
-                            {column.label}
-                          </TableCell>
-                        ))}
-                      </TableRow>
-                    </TableHead>
-                    <TableBody>
-                      {/* <CreateRows user={users} /> */}
-                      {skeetRows
-                        .slice(
-                          page * rowsPerPage,
-                          page * rowsPerPage + rowsPerPage
-                        )
-                        .map((row) => {
-                          return (
-                            <TableRow
-                              hover
-                              role="checkbox"
-                              tabIndex={-1}
-                              key={row.code}
+        <Container style={{ marginLeft: "50px" }}>
+          <div className={classes.root}>
+            <AppBar position="static" color="default">
+              <Tabs
+                value={value}
+                onChange={handleChange}
+                indicatorColor="primary"
+                textColor="primary"
+                variant="scrollable"
+                scrollButtons="auto"
+                aria-label="scrollable auto tabs example"
+              >
+                <Tab label="Skeet Score" {...a11yProps(0)} />
+                <Tab label="Trap Score" {...a11yProps(1)} />
+                <Tab label="Overall Score" {...a11yProps(2)} />
+              </Tabs>
+            </AppBar>
+            <TabPanel value={value} index={0}>
+              <Container className="scoreTitle">
+                <h1>Skeet Scores</h1>
+              </Container>
+              <Container>
+                <Paper className={classes.root}>
+                  <TableContainer
+                    className={classes.container}
+                    mx="auto"
+                    xs={12}
+                  >
+                    <Table stickyHeader aria-label="sticky table">
+                      <TableHead>
+                        <TableRow>
+                          {skeetColumns.map((column) => (
+                            <TableCell
+                              key={column.id}
+                              align={column.align}
+                              style={{ minWidth: column.minWidth }}
                             >
-                              {skeetColumns.map((column) => {
-                                const value = row[column.id];
-                                return (
-                                  <TableCell
-                                    key={column.id}
-                                    align={column.align}
-                                  >
-                                    {column.format && typeof value === "number"
-                                      ? column.format(value)
-                                      : value}
-                                  </TableCell>
-                                );
-                              })}
-                            </TableRow>
-                          );
-                        })}
-                    </TableBody>
-                  </Table>
-                </TableContainer>
-                <TablePagination
-                  rowsPerPageOptions={[10, 25, 100]}
-                  component="div"
-                  count={skeetRows.length}
-                  rowsPerPage={rowsPerPage}
-                  page={page}
-                  onChangePage={handleChangePage}
-                  onChangeRowsPerPage={handleChangeRowsPerPage}
-                />
-              </Paper>
-            </Container>
-          </TabPanel>
-          <TabPanel value={value} index={1}>
-            <Container className="scoreTitle">
-              <h1>Trap Scores</h1>
-            </Container>
-            <Container>
-              <Paper className={classes.root}>
-                <TableContainer className={classes.container}>
-                  <Table stickyHeader aria-label="sticky table">
-                    <TableHead>
-                      <TableRow>
-                        {trapColumns.map((column) => (
-                          <TableCell
-                            key={column.id}
-                            align={column.align}
-                            style={{ minWidth: column.minWidth }}
-                          >
-                            {column.label}
-                          </TableCell>
-                        ))}
-                      </TableRow>
-                    </TableHead>
-                    <TableBody>
-                      {trapRows
-                        .slice(
-                          page * rowsPerPage,
-                          page * rowsPerPage + rowsPerPage
-                        )
-                        .map((row) => {
-                          return (
-                            <TableRow
-                              hover
-                              role="checkbox"
-                              tabIndex={-1}
-                              key={row.code}
+                              {column.label}
+                            </TableCell>
+                          ))}
+                        </TableRow>
+                      </TableHead>
+                      <TableBody>
+                        {/* <CreateRows user={users} /> */}
+                        {skeetRows
+                          .slice(
+                            page * rowsPerPage,
+                            page * rowsPerPage + rowsPerPage
+                          )
+                          .map((row) => {
+                            return (
+                              <TableRow
+                                hover
+                                role="checkbox"
+                                tabIndex={-1}
+                                key={row.code}
+                              >
+                                {skeetColumns.map((column) => {
+                                  const value = row[column.id];
+                                  return (
+                                    <TableCell
+                                      key={column.id}
+                                      align={column.align}
+                                    >
+                                      {column.format &&
+                                      typeof value === "number"
+                                        ? column.format(value)
+                                        : value}
+                                    </TableCell>
+                                  );
+                                })}
+                              </TableRow>
+                            );
+                          })}
+                      </TableBody>
+                    </Table>
+                  </TableContainer>
+                  <TablePagination
+                    rowsPerPageOptions={[10, 25, 100]}
+                    component="div"
+                    count={skeetRows.length}
+                    rowsPerPage={rowsPerPage}
+                    page={page}
+                    onChangePage={handleChangePage}
+                    onChangeRowsPerPage={handleChangeRowsPerPage}
+                  />
+                </Paper>
+              </Container>
+            </TabPanel>
+            <TabPanel value={value} index={1}>
+              <Container className="scoreTitle">
+                <h1>Trap Scores</h1>
+              </Container>
+              <Container>
+                <Paper className={classes.root}>
+                  <TableContainer className={classes.container}>
+                    <Table stickyHeader aria-label="sticky table">
+                      <TableHead>
+                        <TableRow>
+                          {trapColumns.map((column) => (
+                            <TableCell
+                              key={column.id}
+                              align={column.align}
+                              style={{ minWidth: column.minWidth }}
                             >
-                              {trapColumns.map((column) => {
-                                const value = row[column.id];
-                                return (
-                                  <TableCell
-                                    key={column.id}
-                                    align={column.align}
-                                  >
-                                    {column.format && typeof value === "number"
-                                      ? column.format(value)
-                                      : value}
-                                  </TableCell>
-                                );
-                              })}
-                            </TableRow>
-                          );
-                        })}
-                    </TableBody>
-                  </Table>
-                </TableContainer>
-                <TablePagination
-                  rowsPerPageOptions={[10, 25, 100]}
-                  component="div"
-                  count={trapRows.length}
-                  rowsPerPage={rowsPerPage}
-                  page={page}
-                  onChangePage={handleChangePage}
-                  onChangeRowsPerPage={handleChangeRowsPerPage}
-                />
-              </Paper>
-            </Container>
-          </TabPanel>
-          <TabPanel value={value} index={2}>
-            <Container className="scoreTitle">
-              <h1>Overall Score</h1>
-            </Container>
-            <Container>
-              <Paper className={classes.root}>
-                <TableContainer className={classes.container}>
-                  <Table stickyHeader aria-label="sticky table">
-                    <TableHead>
-                      <TableRow>
-                        {overallColumns.map((column) => (
-                          <TableCell
-                            key={column.id}
-                            align={column.align}
-                            style={{ minWidth: column.minWidth }}
-                          >
-                            {column.label}
-                          </TableCell>
-                        ))}
-                      </TableRow>
-                    </TableHead>
-                    <TableBody>
-                      {overallRows
-                        .slice(
-                          page * rowsPerPage,
-                          page * rowsPerPage + rowsPerPage
-                        )
-                        .map((row) => {
-                          return (
-                            <TableRow
-                              hover
-                              role="checkbox"
-                              tabIndex={-1}
-                              key={row.code}
+                              {column.label}
+                            </TableCell>
+                          ))}
+                        </TableRow>
+                      </TableHead>
+                      <TableBody>
+                        {trapRows
+                          .slice(
+                            page * rowsPerPage,
+                            page * rowsPerPage + rowsPerPage
+                          )
+                          .map((row) => {
+                            return (
+                              <TableRow
+                                hover
+                                role="checkbox"
+                                tabIndex={-1}
+                                key={row.code}
+                              >
+                                {trapColumns.map((column) => {
+                                  const value = row[column.id];
+                                  return (
+                                    <TableCell
+                                      key={column.id}
+                                      align={column.align}
+                                    >
+                                      {column.format &&
+                                      typeof value === "number"
+                                        ? column.format(value)
+                                        : value}
+                                    </TableCell>
+                                  );
+                                })}
+                              </TableRow>
+                            );
+                          })}
+                      </TableBody>
+                    </Table>
+                  </TableContainer>
+                  <TablePagination
+                    rowsPerPageOptions={[10, 25, 100]}
+                    component="div"
+                    count={trapRows.length}
+                    rowsPerPage={rowsPerPage}
+                    page={page}
+                    onChangePage={handleChangePage}
+                    onChangeRowsPerPage={handleChangeRowsPerPage}
+                  />
+                </Paper>
+              </Container>
+            </TabPanel>
+            <TabPanel value={value} index={2}>
+              <Container className="scoreTitle">
+                <h1>Overall Score</h1>
+              </Container>
+              <Container>
+                <Paper className={classes.root}>
+                  <TableContainer className={classes.container}>
+                    <Table stickyHeader aria-label="sticky table">
+                      <TableHead>
+                        <TableRow>
+                          {overallColumns.map((column) => (
+                            <TableCell
+                              key={column.id}
+                              align={column.align}
+                              style={{ minWidth: column.minWidth }}
                             >
-                              {overallColumns.map((column) => {
-                                const value = row[column.id];
-                                return (
-                                  <TableCell
-                                    key={column.id}
-                                    align={column.align}
-                                  >
-                                    {column.format && typeof value === "number"
-                                      ? column.format(value)
-                                      : value}
-                                  </TableCell>
-                                );
-                              })}
-                            </TableRow>
-                          );
-                        })}
-                    </TableBody>
-                  </Table>
-                </TableContainer>
-                <TablePagination
-                  rowsPerPageOptions={[10, 25, 100]}
-                  component="div"
-                  count={overallRows.length}
-                  rowsPerPage={rowsPerPage}
-                  page={page}
-                  onChangePage={handleChangePage}
-                  onChangeRowsPerPage={handleChangeRowsPerPage}
-                />
-              </Paper>
-            </Container>
-          </TabPanel>
-        </div>
+                              {column.label}
+                            </TableCell>
+                          ))}
+                        </TableRow>
+                      </TableHead>
+                      <TableBody>
+                        {overallRows
+                          .slice(
+                            page * rowsPerPage,
+                            page * rowsPerPage + rowsPerPage
+                          )
+                          .map((row) => {
+                            return (
+                              <TableRow
+                                hover
+                                role="checkbox"
+                                tabIndex={-1}
+                                key={row.code}
+                              >
+                                {overallColumns.map((column) => {
+                                  const value = row[column.id];
+                                  return (
+                                    <TableCell
+                                      key={column.id}
+                                      align={column.align}
+                                    >
+                                      {column.format &&
+                                      typeof value === "number"
+                                        ? column.format(value)
+                                        : value}
+                                    </TableCell>
+                                  );
+                                })}
+                              </TableRow>
+                            );
+                          })}
+                      </TableBody>
+                    </Table>
+                  </TableContainer>
+                  <TablePagination
+                    rowsPerPageOptions={[10, 25, 100]}
+                    component="div"
+                    count={overallRows.length}
+                    rowsPerPage={rowsPerPage}
+                    page={page}
+                    onChangePage={handleChangePage}
+                    onChangeRowsPerPage={handleChangeRowsPerPage}
+                  />
+                </Paper>
+              </Container>
+            </TabPanel>
+          </div>
+        </Container>
       </Container>
     </>
   );

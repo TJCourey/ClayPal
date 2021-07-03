@@ -134,13 +134,18 @@ export default function TrapScore() {
 
   return (
     <>
-      <Container className="rulesContainer">
-        <h1>Trap Shooting</h1>
-        <h3>{addRules}</h3>
+      <Container
+        className="rulesContainer"
+        // style={{ textAlign: "center" }}
+        item
+        xs={9}
+      >
+        <h1 style={{ paddingLeft: "15%" }}>Trap Shooting</h1>
+        <h3 style={{ textAlign: "center", paddingLeft: "15%" }}>{addRules}</h3>
       </Container>
 
-      <Container className="trapForm">
-        <div className={classes.root}>
+      <Container className="trapForm" onSubmit={handleFormSubmit}>
+        <div className={classes.root} style={{ marginLeft: "50px" }}>
           <AppBar position="static" color="default">
             <Tabs
               value={value}
@@ -162,7 +167,15 @@ export default function TrapScore() {
           {trapRules.map(renderTab)}
         </div>
 
-        <Button variant="contained" onClick={handleFormSubmit}>
+        <Button
+          variant="contained"
+          onSubmit={handleFormSubmit}
+          style={{
+            marginLeft: "50px",
+            marginTop: "15px",
+            backgroundColor: "#ffa500",
+          }}
+        >
           Submit
         </Button>
       </Container>

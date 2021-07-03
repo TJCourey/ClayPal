@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import SkeetScore from "./pages/SkeetScore";
 import TrapScore from "./pages/TrapScore";
+import Dashboard from "./pages/Dashboard";
 import skeet from "./components/img/skeet.png";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { setContext } from "@apollo/client/link/context";
@@ -51,6 +52,9 @@ function App() {
           <Switch>
             <Route exact path="/">
               <Main />
+            </Route>
+            <Route exact path="/dashboard">
+              <Dashboard />
             </Route>
             <Route exact path="/leaderboard">
               <StickyHeadTable />

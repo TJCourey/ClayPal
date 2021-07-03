@@ -25,6 +25,7 @@ import { GiSilverBullet } from "react-icons/gi";
 import { GoSearch } from "react-icons/go";
 import { Link } from "react-router-dom";
 import Box from "@material-ui/core/Box";
+import ShowChartIcon from "@material-ui/icons/ShowChart";
 
 import Auth from "../utils/auth";
 // import { logout } from "../utils/auth";
@@ -113,6 +114,27 @@ const renderNavItems = (text, index) => {
   if (Auth.loggedIn()) {
     // console.log("Auth.loggedIn()", Auth.loggedIn(), "index", index);
     switch (index) {
+      case 0:
+        result = (
+          <Link
+            to="/dashboard"
+            style={{
+              textDecoration: "none",
+              color: "black",
+              marginTop: "15px",
+            }}
+          >
+            <Box display={"flex"}>
+              <ListItemIcon>
+                <ShowChartIcon
+                  style={{ height: "30px", width: "30px", color: "#ffa500" }}
+                />
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </Box>
+          </Link>
+        );
+        break;
       case 1:
         result = (
           <Link
