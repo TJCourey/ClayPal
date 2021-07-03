@@ -28,16 +28,19 @@ export const LOGIN_USER = gql`
 export const ADD_SKEET_SCORE = gql`
   mutation addSkeetScore($overallScore: String!) {
     addSkeetScore(overallScore: $overallScore) {
-      _id
-      username
+      user {
+        _id
+        username
+      }
     }
   }
 `;
 export const ADD_TRAP_SCORE = gql`
-  mutation addTrapScore($overallScore: String!) {
-    addTrapScore(overallScore: $overallScore) {
+  mutation addTrapScore($_id: String!, $overallScore: String!) {
+    addTrapScore(_id: $_id, overallScore: $overallScore) {
       _id
       username
+      trapScore
     }
   }
 `;

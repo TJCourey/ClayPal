@@ -73,11 +73,11 @@ const resolvers = {
       throw new AuthenticationError("You need to be logged in!");
     },
 
-    addTrapScore: async (parent, args, context) => {
+    addTrapScore: async (parent, { _id, overallScore }, context) => {
+      const trapscore = await TrapScore.create({ overallScore });
       if (context.user) {
-        const trapscore = await TrapScore.create(args);
         return User.findOneAndUpdate(
-          { _id: context.user._id },
+          { _id: _id },
           {
             $addToSet: {
               trapScore: trapscore._id,

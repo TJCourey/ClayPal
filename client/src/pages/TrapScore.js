@@ -11,6 +11,7 @@ import Container from "@material-ui/core/Container";
 import Box from "@material-ui/core/Box";
 import { useMutation } from "@apollo/client";
 import { ADD_TRAP_SCORE } from "../utils/mutations";
+import AuthService from "../utils/auth";
 
 const trapRules = [
   {
@@ -85,24 +86,27 @@ const useStyles = makeStyles((theme) => ({
 export default function TrapScore() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
-  const [station, setStation] = React.useState("");
-  const [weapon, setWeapon] = React.useState("");
+  // const [station, setStation] = React.useState("");
+  // const [weapon, setWeapon] = React.useState("");
   const [shooter, setShooter] = React.useState("");
   const [overallScore, setOverallScore] = React.useState("");
 
   const [addTrapScore, { error }] = useMutation(ADD_TRAP_SCORE);
 
+  console.log(AuthService.getUser());
+  const activeUser = AuthService.getUser();
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
-  const handleFormSubmit = async (event, overallScore) => {
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
 
     try {
       const { data } = await addTrapScore({
         variables: { overallScore },
       });
+
       window.location.reload();
     } catch (err) {
       console.error(err);
@@ -169,7 +173,7 @@ export default function TrapScore() {
 
         <Button
           variant="contained"
-          onSubmit={handleFormSubmit}
+          onClick={handleFormSubmit}
           style={{
             marginLeft: "50px",
             marginTop: "15px",

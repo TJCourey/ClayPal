@@ -48,7 +48,7 @@ const typeDefs = gql`
       shooter: String
       overallScore: String!
     ): User
-    addTrapScore(overallScore: String!): User
+    addTrapScore(_id: ID!, overallScore: String!): User
   }
 `;
 
