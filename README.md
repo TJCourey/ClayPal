@@ -38,8 +38,6 @@ A list of technologies used within the project:
 - [GraphQL](https://graphql.org/)
 - [MongoDB](https://www.mongodb.com/)
 
-<img src = https://j.gifs.com/GRZ5g3.gif>
-
 # License
 
 None at this time.

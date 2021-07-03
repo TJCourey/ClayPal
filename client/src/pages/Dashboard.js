@@ -127,11 +127,12 @@ export default function Dashboard() {
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} style={{ marginLeft: "50px" }}>
       <CssBaseline />
 
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
+        <h1>DASHBOARD</h1>
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
             {/* Chart */}
