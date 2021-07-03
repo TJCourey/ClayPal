@@ -96,7 +96,7 @@ export default function TrapScore() {
     setValue(newValue);
   };
 
-  const handleFormSubmit = async (event) => {
+  const handleFormSubmit = async (event, overallScore) => {
     event.preventDefault();
 
     try {
@@ -138,9 +138,8 @@ export default function TrapScore() {
         <h1>Trap Shooting</h1>
         <h3>{addRules}</h3>
       </Container>
-      
-      <Container className="trapForm" onSubmit={handleFormSubmit}>
-      
+
+      <Container className="trapForm">
         <div className={classes.root}>
           <AppBar position="static" color="default">
             <Tabs
@@ -163,7 +162,7 @@ export default function TrapScore() {
           {trapRules.map(renderTab)}
         </div>
 
-        <Button variant="contained" onSubmit={handleFormSubmit}>
+        <Button variant="contained" onClick={handleFormSubmit}>
           Submit
         </Button>
       </Container>
