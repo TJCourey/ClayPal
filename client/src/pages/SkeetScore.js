@@ -148,12 +148,12 @@ export default function SkeetScore() {
   return (
     <>
       <Container className="rulesContainer">
-        <h1>Skeet Shooting</h1>
-        <h3>{addRules}</h3>
+        <h1 style={{ paddingLeft: "15%" }}>Skeet Shooting</h1>
+        <h3 style={{ textAlign: "center", paddingLeft: "15%" }}>{addRules}</h3>
       </Container>
       <Container className="skeetForm">
         <form>
-          <div className={classes.root}>
+          <div className={classes.root} style={{ marginLeft: "50px" }}>
             <AppBar position="static" color="default">
               <Tabs
                 value={value}
@@ -177,7 +177,16 @@ export default function SkeetScore() {
             </AppBar>
             {skeetRules.map(renderTab)}
           </div>
-          <Button variant="contained">Default</Button>
+          <Button
+            variant="contained"
+            style={{
+              marginLeft: "50px",
+              marginTop: "15px",
+              backgroundColor: "#ffa500",
+            }}
+          >
+            Submit
+          </Button>
         </form>
       </Container>
     </>

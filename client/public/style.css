@@ -30,3 +30,11 @@ h1 {
   color: #ffc04d;
   font-size: 400%;
 }
+
+@media screen and (max-width: 700px) {
+  h1 {
+    font-size: 300%;
+    text-align: center;
+    margin-top: 50px;
+  }
+}

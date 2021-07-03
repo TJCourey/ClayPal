@@ -1,4 +1,7 @@
-# Insomnia-Thai
+# ClayPal
+
+![Screenshot](client/src/components/img/cpscreenshoot.png)
+[ClayPal Deployed]()
 
 Using this Full Stack application, a user can interact with our ClayPal application to:
 
@@ -21,6 +24,7 @@ Using this Full Stack application, a user can interact with our ClayPal applicat
 # Installation
 
 No installation necessary, visit our website here:
+[ClayPal]()
 
 # Technologies
 
@@ -33,8 +37,6 @@ A list of technologies used within the project:
 - [Node.js](https://nodejs.org/en/)
 - [GraphQL](https://graphql.org/)
 - [MongoDB](https://www.mongodb.com/)
-
-<img src = https://j.gifs.com/GRZ5g3.gif>
 
 # License
 

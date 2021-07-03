@@ -16,6 +16,7 @@ import Grid from "@material-ui/core/Grid";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
+import { sizing } from "@material-ui/system";
 
 import Auth from "../utils/auth";
 
@@ -113,7 +114,12 @@ const Login = (props) => {
   const classes = useStyles();
 
   return (
-    <Grid container component="main" className={classes.root}>
+    <Grid
+      container
+      component="main"
+      className={classes.root}
+      style={{ marginLeft: "50px" }}
+    >
       <CssBaseline />
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
@@ -127,8 +133,8 @@ const Login = (props) => {
 
           {data ? (
             <p>
-              Success! You may now head{" "}
-              <Link to="/">back to the homepage.</Link>
+              Success! You may now head
+              <Link to="/"> back to the homepage.</Link>
             </p>
           ) : (
             <form
