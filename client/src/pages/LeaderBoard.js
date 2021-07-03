@@ -52,14 +52,14 @@ const trapColumns = [
 const overallColumns = [
   { id: "name", label: "Name", minWidth: 170 },
   {
-    id: "weapon",
-    label: "Weapon",
+    id: "percent",
+    label: "Hit Percentage",
     minWidth: 170,
     align: "right",
   },
   {
-    id: "overallScore",
-    label: "Overall Score",
+    id: "hits",
+    label: "Total Hits",
     minWidth: 170,
     align: "right",
   },
@@ -89,6 +89,30 @@ function createTrapData(user) {
   });
   trapRows.sort((a, b) => (a.score > b.score ? -1 : 1));
   return trapRows;
+}
+function createOverallData(user) {
+  let shooterRows = [];
+  user.forEach((account) => {
+    let percent = 0;
+    let shots = 0;
+    let hits = 0;
+    let name = account.username;
+    if ((user = account)) {
+      for (let i = 0; i < user.skeetScore.length; i++) {
+        hits += Number(user.skeetScore[i].overallScore);
+        shots++;
+      }
+      for (let i = 0; i < user.trapScore.length; i++) {
+        hits += Number(user.trapScore[i].overallScore);
+        shots++;
+      }
+      percent = hits / (shots * 25);
+      shooterRows.push({ name, hits, percent });
+    }
+    console.log(shooterRows);
+  });
+  shooterRows.sort((a, b) => (a.percent > b.percent ? -1 : 1));
+  return shooterRows;
 }
 
 const useStyles = makeStyles({
@@ -148,6 +172,8 @@ export default function StickyHeadTable() {
   const rows = [];
   const skeetRows = createSkeetData(users);
   const trapRows = createTrapData(users);
+  const overallRows = createOverallData(users);
+
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -333,7 +359,7 @@ export default function StickyHeadTable() {
                       </TableRow>
                     </TableHead>
                     <TableBody>
-                      {rows
+                      {overallRows
                         .slice(
                           page * rowsPerPage,
                           page * rowsPerPage + rowsPerPage
@@ -368,7 +394,7 @@ export default function StickyHeadTable() {
                 <TablePagination
                   rowsPerPageOptions={[10, 25, 100]}
                   component="div"
-                  count={rows.length}
+                  count={overallRows.length}
                   rowsPerPage={rowsPerPage}
                   page={page}
                   onChangePage={handleChangePage}
