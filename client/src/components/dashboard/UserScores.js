@@ -37,30 +37,28 @@ export default function Orders() {
     console.log(element);
     let percent = 0;
     rows.push(createData(element.date, element.overallScore));
-    percent = element.overallScore / 25;
-    console.log(percent);
+    console.log(rows);
   });
-
+  //Holy crap this is actually working
   return (
     <React.Fragment>
-      <Title>Recent Orders</Title>
+      <Title>Recent Shoots</Title>
       <Table size="small">
         <TableHead>
           <TableRow>
             <TableCell>Date</TableCell>
             <TableCell>----</TableCell>
             <TableCell>----</TableCell>
-
             <TableCell align="right">Overall Score</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {rows.map((row) => (
             <TableRow key={row.id}>
-              <TableCell>{row.date}</TableCell>
+              <TableCell>{row.id}</TableCell>
               <TableCell>{row.skeetScore}</TableCell>
               <TableCell>{row.trapScore}</TableCell>
-              <TableCell align="right">{row.overallScore}</TableCell>
+              <TableCell align="right">{row.date}</TableCell>
             </TableRow>
           ))}
         </TableBody>
