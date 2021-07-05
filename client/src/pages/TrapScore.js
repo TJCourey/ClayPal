@@ -4,6 +4,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
+import FormControl from "@material-ui/core/FormControl";
+import FormGroup from "@material-ui/core/FormGroup";
 import AppBar from "@material-ui/core/AppBar";
 import Checkbox from "@material-ui/core/Checkbox";
 import Button from "@material-ui/core/Button";
@@ -85,11 +87,11 @@ const useStyles = makeStyles((theme) => ({
 export default function TrapScore() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
-  const [station, setStation] = React.useState("");
-  const [weapon, setWeapon] = React.useState("");
-  const [shooter, setShooter] = React.useState("");
-  const [overallScore, setOverallScore] = React.useState("");
-
+  // const [station, setStation] = React.useState("");
+  // const [weapon, setWeapon] = React.useState("");
+  // const [shooter, setShooter] = React.useState("");
+  const [overallScore, setOverallScore] = React.useState(0);
+  // const [submitScore, setSubmitScore] = React.useState("");
   const [addTrapScore, { error }] = useMutation(ADD_TRAP_SCORE);
 
   const handleChange = (event, newValue) => {
@@ -98,10 +100,10 @@ export default function TrapScore() {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
+    console.log("sub button pressed");
     try {
       const { data } = await addTrapScore({
-        variables: { overallScore },
+        variables: { overallScore: overallScore.toString() },
       });
       window.location.reload();
     } catch (err) {
@@ -112,6 +114,7 @@ export default function TrapScore() {
   const handleClick = (event) => {
     setOverallScore(Number(overallScore + 1));
     console.log(overallScore);
+    // setSubmitScore(overallScore);
   };
 
   const renderTab = (tab, i) => {
@@ -143,42 +146,43 @@ export default function TrapScore() {
         <h1 style={{ paddingLeft: "15%" }}>Trap Shooting</h1>
         <h3 style={{ textAlign: "center", paddingLeft: "15%" }}>{addRules}</h3>
       </Container>
+      <form onSubmit={handleFormSubmit}>
+        <Container className="trapForm" onSubmit={handleFormSubmit}>
+          <div className={classes.root} style={{ marginLeft: "50px" }}>
+            <AppBar position="static" color="default">
+              <Tabs
+                value={value}
+                onChange={handleChange}
+                indicatorColor="primary"
+                textColor="primary"
+                variant="scrollable"
+                scrollButtons="auto"
+                aria-label="scrollable auto tabs example"
+              >
+                <Tab label="Station One" {...a11yProps(0)} />
+                <Tab label="Station Two" {...a11yProps(1)} />
+                <Tab label="Station Three" {...a11yProps(2)} />
+                <Tab label="Station Four" {...a11yProps(3)} />
+                <Tab label="Station Five" {...a11yProps(4)} />
+              </Tabs>
+            </AppBar>
 
-      <Container className="trapForm" onSubmit={handleFormSubmit}>
-        <div className={classes.root} style={{ marginLeft: "50px" }}>
-          <AppBar position="static" color="default">
-            <Tabs
-              value={value}
-              onChange={handleChange}
-              indicatorColor="primary"
-              textColor="primary"
-              variant="scrollable"
-              scrollButtons="auto"
-              aria-label="scrollable auto tabs example"
-            >
-              <Tab label="Station One" {...a11yProps(0)} />
-              <Tab label="Station Two" {...a11yProps(1)} />
-              <Tab label="Station Three" {...a11yProps(2)} />
-              <Tab label="Station Four" {...a11yProps(3)} />
-              <Tab label="Station Five" {...a11yProps(4)} />
-            </Tabs>
-          </AppBar>
+            {trapRules.map(renderTab)}
+          </div>
 
-          {trapRules.map(renderTab)}
-        </div>
-
-        <Button
-          variant="contained"
-          onClick={handleFormSubmit}
-          style={{
-            marginLeft: "50px",
-            marginTop: "15px",
-            backgroundColor: "#ffa500",
-          }}
-        >
-          Submit
-        </Button>
-      </Container>
+          <Button
+            variant="contained"
+            type="submit"
+            style={{
+              marginLeft: "50px",
+              marginTop: "15px",
+              backgroundColor: "#ffa500",
+            }}
+          >
+            Submit
+          </Button>
+        </Container>
+      </form>
     </>
   );
 }

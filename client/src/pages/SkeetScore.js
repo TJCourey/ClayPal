@@ -9,8 +9,8 @@ import Checkbox from "@material-ui/core/Checkbox";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import AppBar from "@material-ui/core/AppBar";
-// import { useMutation } from "@apollo/client";
-// import { ADD_SKEET_SCORE } from "../utils/mutations";
+import { useMutation } from "@apollo/client";
+import { ADD_SKEET_SCORE } from "../utils/mutations";
 
 const skeetRules = [
   {
@@ -115,7 +115,7 @@ export default function SkeetScore() {
   // const [weapon, setWeapon] = React.useState("");
   // const [shooter, setShooter] = React.useState("");
   const [overallScore, setOverallScore] = React.useState("");
-
+  const [addSkeetScore, { error }] = useMutation(ADD_SKEET_SCORE);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -124,7 +124,18 @@ export default function SkeetScore() {
     setOverallScore(Number(overallScore + 1));
     console.log(overallScore);
   };
-
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    console.log("sub button pressed");
+    try {
+      const { data } = await addSkeetScore({
+        variables: { overallScore: overallScore.toString() },
+      });
+      window.location.reload();
+    } catch (err) {
+      console.error(err);
+    }
+  };
   const renderTab = (tab, i) => {
     const n = tab.maxPoints;
     return (
@@ -151,8 +162,8 @@ export default function SkeetScore() {
         <h1 style={{ paddingLeft: "15%" }}>Skeet Shooting</h1>
         <h3 style={{ textAlign: "center", paddingLeft: "15%" }}>{addRules}</h3>
       </Container>
-      <Container className="skeetForm">
-        <form>
+      <form onSubmit={handleFormSubmit}>
+        <Container className="skeetForm">
           <div className={classes.root} style={{ marginLeft: "50px" }}>
             <AppBar position="static" color="default">
               <Tabs
@@ -179,6 +190,7 @@ export default function SkeetScore() {
           </div>
           <Button
             variant="contained"
+            type="submit"
             style={{
               marginLeft: "50px",
               marginTop: "15px",
@@ -187,8 +199,8 @@ export default function SkeetScore() {
           >
             Submit
           </Button>
-        </form>
-      </Container>
+        </Container>
+      </form>
     </>
   );
 }

@@ -3,7 +3,7 @@ const dateFormat = require("../utils/dateFormat");
 
 const skeetScoreSchema = new Schema({
   overallScore: {
-    type: Number,
+    type: String,
     required: true,
   },
 
