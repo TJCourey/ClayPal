@@ -21,22 +21,19 @@ export const QUERY_USER = gql`
 `;
 
 export const QUERY_USERNAME = gql`
-  query user($username: String!) {
-    user(username: $username) {
+  query user {
+    user {
       username
       email
       password
       skeetScore {
         _id
         overallScore
-        station
-        weapon
         date
       }
       trapScore {
         _id
         overallScore
-        weapon
         date
       }
     }
