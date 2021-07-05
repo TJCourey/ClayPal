@@ -125,7 +125,7 @@ export default function TrapScore() {
           <Checkbox
             key={index}
             inputProps={{ "aria-label": "uncontrolled-checkbox" }}
-            onChange={(event) => setOverallScore(event.target.value)}
+            onChange={() => handleClick()}
           />
         ))}
       </TabPanel>

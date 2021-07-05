@@ -9,15 +9,11 @@ export const QUERY_USER = gql`
       skeetScore {
         _id
         overallScore
-        station
-        weapon
         date
       }
       trapScore {
         _id
         overallScore
-        station
-        weapon
         date
       }
     }
