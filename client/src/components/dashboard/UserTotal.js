@@ -9,7 +9,7 @@ import { QUERY_USERNAME } from "../../utils/queries";
 function preventDefault(event) {
   event.preventDefault();
 }
-
+//Dont really know whats going on
 const useStyles = makeStyles({
   depositContext: {
     flex: 1,

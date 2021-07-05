@@ -11,8 +11,8 @@ import { useQuery } from "@apollo/client";
 import { QUERY_USERNAME } from "../../utils/queries";
 
 // Generate Order Data
-function createData(id, date, skeetScore, trapScore) {
-  return { id, date, skeetScore, trapScore };
+function createData(id, date, overallScore) {
+  return { id, date, overallScore };
 }
 
 const rows = [];
@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(3),
   },
 }));
-
+//Another comment here
 export default function Orders() {
   const classes = useStyles();
 
@@ -48,8 +48,9 @@ export default function Orders() {
         <TableHead>
           <TableRow>
             <TableCell>Date</TableCell>
-            <TableCell>skeetScore</TableCell>
-            <TableCell>TrapScore</TableCell>
+            <TableCell>----</TableCell>
+            <TableCell>----</TableCell>
+
             <TableCell align="right">Overall Score</TableCell>
           </TableRow>
         </TableHead>

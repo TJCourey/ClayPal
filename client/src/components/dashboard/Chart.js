@@ -12,7 +12,7 @@ import Title from "./Title";
 import { useQuery } from "@apollo/client";
 import { QUERY_USERNAME } from "../../utils/queries";
 import moment from "moment";
-
+//Generate the average
 // Generate Sales Data
 function createData(time, amount) {
   return { time, amount };
