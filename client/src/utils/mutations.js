@@ -34,7 +34,7 @@ export const ADD_SKEET_SCORE = gql`
   }
 `;
 export const ADD_TRAP_SCORE = gql`
-  mutation addTrapScore($overallScore: String!) {
+  mutation addTrapScore($overallScore: String) {
     addTrapScore(overallScore: $overallScore) {
       _id
       username
