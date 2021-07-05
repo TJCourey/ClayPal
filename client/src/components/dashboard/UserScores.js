@@ -1,66 +1,73 @@
 import React from "react";
-import { useTheme } from "@material-ui/core/styles";
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  Label,
-  ResponsiveContainer,
-} from "recharts";
+import Link from "@material-ui/core/Link";
+import { makeStyles } from "@material-ui/core/styles";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
 import Title from "./Title";
+import { useQuery } from "@apollo/client";
+import { QUERY_USERNAME } from "../../utils/queries";
 
-// Generate Sales Data
-function createData(time, amount) {
-  return { time, amount };
+// Generate Order Data
+function createData(id, date, overallScore) {
+  return { id, date, overallScore };
 }
 
-const data = [
-  createData("00:00", 0),
-  createData("03:00", 300),
-  createData("06:00", 600),
-  createData("09:00", 800),
-  createData("12:00", 1500),
-  createData("15:00", 2000),
-  createData("18:00", 2400),
-  createData("21:00", 2400),
-  createData("24:00", undefined),
-];
+const rows = [];
 
-export default function UserScores() {
-  const theme = useTheme();
+function preventDefault(event) {
+  event.preventDefault();
+}
 
+const useStyles = makeStyles((theme) => ({
+  seeMore: {
+    marginTop: theme.spacing(3),
+  },
+}));
+//Another comment here
+export default function Orders() {
+  const classes = useStyles();
+
+  const { loading, data } = useQuery(QUERY_USERNAME);
+  const userData = data?.user || {};
+  console.log(data);
+  userData.skeetScore.forEach((element) => {
+    console.log(element);
+    let percent = 0;
+    rows.push(createData(element.date, element.overallScore));
+    console.log(rows);
+  });
+  //Holy crap this is actually working
   return (
     <React.Fragment>
-      <Title>Today</Title>
-      <ResponsiveContainer>
-        <LineChart
-          data={data}
-          margin={{
-            top: 16,
-            right: 16,
-            bottom: 0,
-            left: 24,
-          }}
-        >
-          <XAxis dataKey="time" stroke={theme.palette.text.secondary} />
-          <YAxis stroke={theme.palette.text.secondary}>
-            <Label
-              angle={270}
-              position="left"
-              style={{ textAnchor: "middle", fill: theme.palette.text.primary }}
-            >
-              {/* Sales ($) */}
-            </Label>
-          </YAxis>
-          <Line
-            type="monotone"
-            dataKey="amount"
-            stroke={theme.palette.primary.main}
-            dot={false}
-          />
-        </LineChart>
-      </ResponsiveContainer>
+      <Title>Recent Shoots</Title>
+      <Table size="small">
+        <TableHead>
+          <TableRow>
+            <TableCell>Date</TableCell>
+            <TableCell>----</TableCell>
+            <TableCell>----</TableCell>
+            <TableCell align="right">Overall Score</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {rows.map((row) => (
+            <TableRow key={row.id}>
+              <TableCell>{row.id}</TableCell>
+              <TableCell>{row.skeetScore}</TableCell>
+              <TableCell>{row.trapScore}</TableCell>
+              <TableCell align="right">{row.date}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+      <div className={classes.seeMore}>
+        <Link color="primary" href="#" onClick={preventDefault}>
+          See more orders
+        </Link>
+      </div>
     </React.Fragment>
   );
 }

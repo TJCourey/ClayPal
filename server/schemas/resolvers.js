@@ -9,8 +9,9 @@ const resolvers = {
     users: async () => {
       return await User.find().populate("skeetScore").populate("trapScore");
     },
-    user: async (parent, { username }) => {
-      return await User.findOne({ username })
+    user: async (parent, { username }, context) => {
+      console.log(context);
+      return await User.findOne({ _id: context.user._id })
         .populate("skeetScore")
         .populate("trapScore");
     },

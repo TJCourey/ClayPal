@@ -13,6 +13,7 @@ import Container from "@material-ui/core/Container";
 import Box from "@material-ui/core/Box";
 import { useMutation } from "@apollo/client";
 import { ADD_TRAP_SCORE } from "../utils/mutations";
+import { Redirect } from "react-router-dom";
 
 const trapRules = [
   {
@@ -102,6 +103,7 @@ export default function TrapScore() {
       const { data } = await addTrapScore({
         variables: { overallScore: overallScore.toString() },
       });
+
       window.location.reload();
     } catch (err) {
       console.error(err);
