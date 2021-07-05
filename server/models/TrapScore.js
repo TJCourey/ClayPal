@@ -4,7 +4,6 @@ const dateFormat = require("../utils/dateFormat");
 const trapScoreSchema = new Schema({
   overallScore: {
     type: String,
-    required: true,
   },
 
   station: [

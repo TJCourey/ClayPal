@@ -13,16 +13,12 @@ const typeDefs = gql`
   type SkeetScore {
     _id: ID
     overallScore: String
-    station: [String]
-    weapon: String
     date: String
   }
 
   type TrapScore {
     _id: ID
     overallScore: String
-    station: [String]
-    weapon: String
     date: String
   }
 
@@ -41,8 +37,13 @@ const typeDefs = gql`
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
+<<<<<<< HEAD
     addSkeetScore(overallScore: String!): User
     addTrapScore(overallScore: String!): User
+=======
+    addSkeetScore(overallScore: String): User
+    addTrapScore(overallScore: String): User
+>>>>>>> main
   }
 `;
 

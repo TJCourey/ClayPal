@@ -87,11 +87,8 @@ const useStyles = makeStyles((theme) => ({
 export default function TrapScore() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
-  // const [station, setStation] = React.useState("");
-  // const [weapon, setWeapon] = React.useState("");
-  // const [shooter, setShooter] = React.useState("");
-  const [overallScore, setOverallScore] = React.useState(0);
-  // const [submitScore, setSubmitScore] = React.useState("");
+  const [overallScore, setOverallScore] = React.useState("");
+
   const [addTrapScore, { error }] = useMutation(ADD_TRAP_SCORE);
 
   const handleChange = (event, newValue) => {
@@ -128,7 +125,7 @@ export default function TrapScore() {
           <Checkbox
             key={index}
             inputProps={{ "aria-label": "uncontrolled-checkbox" }}
-            onChange={() => handleClick()}
+            onChange={(event) => setOverallScore(event.target.value)}
           />
         ))}
       </TabPanel>
@@ -147,7 +144,7 @@ export default function TrapScore() {
         <h3 style={{ textAlign: "center", paddingLeft: "15%" }}>{addRules}</h3>
       </Container>
       <form onSubmit={handleFormSubmit}>
-        <Container className="trapForm" onSubmit={handleFormSubmit}>
+        <Container className="trapForm">
           <div className={classes.root} style={{ marginLeft: "50px" }}>
             <AppBar position="static" color="default">
               <Tabs
@@ -171,6 +168,7 @@ export default function TrapScore() {
           </div>
 
           <Button
+            className="btn"
             variant="contained"
             type="submit"
             style={{
