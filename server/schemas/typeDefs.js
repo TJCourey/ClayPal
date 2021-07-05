@@ -37,13 +37,8 @@ const typeDefs = gql`
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-<<<<<<< HEAD
-    addSkeetScore(overallScore: String!): User
-    addTrapScore(overallScore: String!): User
-=======
     addSkeetScore(overallScore: String): User
     addTrapScore(overallScore: String): User
->>>>>>> main
   }
 `;
 
