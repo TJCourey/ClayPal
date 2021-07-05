@@ -11,8 +11,6 @@ import Container from "@material-ui/core/Container";
 import Box from "@material-ui/core/Box";
 import { useMutation } from "@apollo/client";
 import { ADD_TRAP_SCORE } from "../utils/mutations";
-var btn = document.getElementById("btn");
-var count = 0;
 
 const trapRules = [
   {
@@ -112,11 +110,6 @@ export default function TrapScore() {
     setOverallScore(event.target.value);
     console.log(event.target.value);
   };
-
-  // btn.onclick = function () {
-  //   count++;
-  //   setOverallScore(count);
-  // };
 
   const renderTab = (tab, i) => {
     const n = tab.maxPoints;
