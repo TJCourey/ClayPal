@@ -5,7 +5,7 @@
 
 ClayPal is a score tracker for skeet and trap shooters. Using this makes keeping scores and stations organized, eaisily accessable and will keep the competitive drive between other users and yourself flowing with a leaderboard that shows all relevant stats.
 
-Challenges that were overcame were capturing data to display to each card accurately and individually between stations, targets hit and the users that the stats apply to.
+Challenges overcame were capturing data to display to each card accurately and individually between stations, targets hit and the users that the stats apply to.
 
 Using this Full Stack application, a user can interact with our ClayPal application to:
 
