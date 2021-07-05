@@ -9,8 +9,8 @@ import Checkbox from "@material-ui/core/Checkbox";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import AppBar from "@material-ui/core/AppBar";
-import { useMutation } from "@apollo/client";
-import { ADD_SKEET_SCORE } from "../utils/mutations";
+// import { useMutation } from "@apollo/client";
+// import { ADD_SKEET_SCORE } from "../utils/mutations";
 
 const skeetRules = [
   {
@@ -111,9 +111,9 @@ const useStyles = makeStyles((theme) => ({
 export default function SkeetScore() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
-  const [station, setStation] = React.useState("");
-  const [weapon, setWeapon] = React.useState("");
-  const [shooter, setShooter] = React.useState("");
+  // const [station, setStation] = React.useState("");
+  // const [weapon, setWeapon] = React.useState("");
+  // const [shooter, setShooter] = React.useState("");
   const [overallScore, setOverallScore] = React.useState("");
 
   const handleChange = (event, newValue) => {

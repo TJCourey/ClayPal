@@ -137,7 +137,7 @@ export default function TrapScore() {
       <Container
         className="rulesContainer"
         // style={{ textAlign: "center" }}
-        item
+
         xs={9}
       >
         <h1 style={{ paddingLeft: "15%" }}>Trap Shooting</h1>
@@ -169,7 +169,7 @@ export default function TrapScore() {
 
         <Button
           variant="contained"
-          onSubmit={handleFormSubmit}
+          onClick={handleFormSubmit}
           style={{
             marginLeft: "50px",
             marginTop: "15px",

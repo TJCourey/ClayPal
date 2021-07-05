@@ -19,6 +19,7 @@ import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../utils/mutations";
 
 import Auth from "../utils/auth";
+// import { ContactlessOutlined } from "@material-ui/icons";
 
 function Copyright() {
   return (
@@ -82,6 +83,7 @@ const Signup = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log(formState);
+    console.log(data);
 
     try {
       const { data } = await addUser({
@@ -91,6 +93,7 @@ const Signup = () => {
       Auth.login(data.addUser.token);
     } catch (e) {
       console.error(e);
+      console.log(error);
     }
   };
 

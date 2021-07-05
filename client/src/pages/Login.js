@@ -16,7 +16,7 @@ import Grid from "@material-ui/core/Grid";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import { sizing } from "@material-ui/system";
+// import { sizing } from "@material-ui/system";
 
 import Auth from "../utils/auth";
 
@@ -73,7 +73,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Login = (props) => {
   const [formState, setFormState] = useState({ email: "", password: "" });
-  const [login, { error, data }] = useMutation(LOGIN_USER);
+  const [login, { data }] = useMutation(LOGIN_USER);
 
   // update state based on form input changes
   const handleChange = (event) => {
