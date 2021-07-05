@@ -27,9 +27,10 @@ export default function Chart() {
   const userData = data?.user || {};
   console.log(data);
 
+  let percent = 0;
   userData.skeetScore.forEach((element) => {
     console.log(element);
-    let percent = 0;
+
     data2.push(createData(element.date, element.overallScore));
     percent = element.overallScore / 25;
     console.log(percent);
