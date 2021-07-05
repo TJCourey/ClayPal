@@ -1,7 +1,7 @@
 # ClayPal
 
 ![Screenshot](client/src/components/img/cpscreenshoot.png)
-[ClayPal Deployed]()
+[ClayPal Deployed](https://claypal.herokuapp.com/)
 
 ClayPal is a score tracker for skeet and trap shooters. Using this makes keeping scores and stations organized, eaisily accessable and will keep the competitive drive between other users and yourself flowing with a leaderboard that shows all relevant stats.
 
@@ -28,7 +28,7 @@ Using this Full Stack application, a user can interact with our ClayPal applicat
 # Installation
 
 No installation necessary, visit our website here:
-[ClayPal]()
+[ClayPal](https://claypal.herokuapp.com/)
 
 # Technologies
 
