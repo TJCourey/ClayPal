@@ -8,7 +8,7 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TablePagination from "@material-ui/core/TablePagination";
 import TableRow from "@material-ui/core/TableRow";
-import { Grid, Container } from "@material-ui/core/";
+import { Container } from "@material-ui/core/";
 import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
@@ -17,7 +17,6 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import { QUERY_USER } from "../utils/queries";
 import { useQuery } from "@apollo/client";
-import { CreateRows } from "../components/leaderboardHelpers/skeetscores";
 
 const skeetColumns = [
   { id: "name", label: "Name", minWidth: 170 },
@@ -107,6 +106,7 @@ function createOverallData(user) {
         shots++;
       }
       percent = hits / (shots * 25);
+      percent = percent.toFixed(2);
       shooterRows.push({ name, hits, percent });
     }
     console.log(shooterRows);
@@ -169,7 +169,7 @@ export default function StickyHeadTable() {
   console.log(users);
   // const rows = users?.map(createData);
   // users?.map(createData);
-  const rows = [];
+  // const rows = [];
   const skeetRows = createSkeetData(users);
   const trapRows = createTrapData(users);
   const overallRows = createOverallData(users);

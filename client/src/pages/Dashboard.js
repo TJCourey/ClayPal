@@ -2,7 +2,7 @@ import React from "react";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import Drawer from "@material-ui/core/Drawer";
+// import Drawer from "@material-ui/core/Drawer";
 import Box from "@material-ui/core/Box";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -25,6 +25,9 @@ import {
 import Chart from "../components/dashboard/Chart";
 import UserTotal from "../components/dashboard/UserTotal";
 import UserScores from "../components/dashboard/UserScores";
+import Auth from "../utils/auth";
+import { QUERY_USERNAME } from "../utils/queries";
+import { useQuery } from "@apollo/client";
 
 function Copyright() {
   return (
@@ -123,8 +126,15 @@ const useStyles = makeStyles((theme) => ({
 export default function Dashboard() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
-
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+
+  const { loading, data } = useQuery(QUERY_USERNAME);
+  if (loading) {
+    return null;
+  }
+  console.log(data);
+  const activeUser = data?.users || [];
+  console.log(activeUser);
 
   return (
     <div className={classes.root} style={{ marginLeft: "50px" }}>
@@ -138,7 +148,7 @@ export default function Dashboard() {
             {/* Chart */}
             <Grid item xs={12} md={8} lg={9}>
               <Paper className={fixedHeightPaper}>
-                <Chart />
+                <Chart {...activeUser} />
               </Paper>
             </Grid>
             {/* Recent UserTotal */}

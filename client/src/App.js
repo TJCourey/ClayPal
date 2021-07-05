@@ -6,7 +6,7 @@ import Signup from "./pages/Signup";
 import SkeetScore from "./pages/SkeetScore";
 import TrapScore from "./pages/TrapScore";
 import Dashboard from "./pages/Dashboard";
-import skeet from "./components/img/skeet.png";
+// import skeet from "./components/img/skeet.png";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { setContext } from "@apollo/client/link/context";
 

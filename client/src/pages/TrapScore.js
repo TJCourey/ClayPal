@@ -4,6 +4,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
+import FormControl from "@material-ui/core/FormControl";
+import FormGroup from "@material-ui/core/FormGroup";
 import AppBar from "@material-ui/core/AppBar";
 import Checkbox from "@material-ui/core/Checkbox";
 import Button from "@material-ui/core/Button";
@@ -95,10 +97,10 @@ export default function TrapScore() {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
+    console.log("sub button pressed");
     try {
       const { data } = await addTrapScore({
-        variables: { overallScore },
+        variables: { overallScore: overallScore.toString() },
       });
       window.location.reload();
     } catch (err) {
@@ -107,8 +109,9 @@ export default function TrapScore() {
   };
   //Foreach, click, adds 1 to the score
   const handleClick = (event) => {
-    setOverallScore(event.target.value);
-    console.log(event.target.value);
+    setOverallScore(Number(overallScore + 1));
+    console.log(overallScore);
+    // setSubmitScore(overallScore);
   };
 
   const renderTab = (tab, i) => {
@@ -122,7 +125,7 @@ export default function TrapScore() {
           <Checkbox
             key={index}
             inputProps={{ "aria-label": "uncontrolled-checkbox" }}
-            onChange={(event) => setOverallScore(event.target.value)}
+            onChange={() => handleClick()}
           />
         ))}
       </TabPanel>
@@ -134,7 +137,7 @@ export default function TrapScore() {
       <Container
         className="rulesContainer"
         // style={{ textAlign: "center" }}
-        item
+
         xs={9}
       >
         <h1 style={{ paddingLeft: "15%" }}>Trap Shooting</h1>
