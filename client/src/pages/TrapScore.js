@@ -11,6 +11,8 @@ import Container from "@material-ui/core/Container";
 import Box from "@material-ui/core/Box";
 import { useMutation } from "@apollo/client";
 import { ADD_TRAP_SCORE } from "../utils/mutations";
+var btn = document.getElementById("btn");
+var count = 0;
 
 const trapRules = [
   {
@@ -85,9 +87,6 @@ const useStyles = makeStyles((theme) => ({
 export default function TrapScore() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
-  const [station, setStation] = React.useState("");
-  const [weapon, setWeapon] = React.useState("");
-  const [shooter, setShooter] = React.useState("");
   const [overallScore, setOverallScore] = React.useState("");
 
   const [addTrapScore, { error }] = useMutation(ADD_TRAP_SCORE);
@@ -110,9 +109,14 @@ export default function TrapScore() {
   };
   //Foreach, click, adds 1 to the score
   const handleClick = (event) => {
-    setOverallScore(Number(overallScore + 1));
-    console.log(overallScore);
+    setOverallScore(event.target.value);
+    console.log(event.target.value);
   };
+
+  // btn.onclick = function () {
+  //   count++;
+  //   setOverallScore(count);
+  // };
 
   const renderTab = (tab, i) => {
     const n = tab.maxPoints;
@@ -125,7 +129,7 @@ export default function TrapScore() {
           <Checkbox
             key={index}
             inputProps={{ "aria-label": "uncontrolled-checkbox" }}
-            onChange={() => handleClick()}
+            onChange={(event) => setOverallScore(event.target.value)}
           />
         ))}
       </TabPanel>
@@ -143,42 +147,44 @@ export default function TrapScore() {
         <h1 style={{ paddingLeft: "15%" }}>Trap Shooting</h1>
         <h3 style={{ textAlign: "center", paddingLeft: "15%" }}>{addRules}</h3>
       </Container>
+      <form onSubmit={handleFormSubmit}>
+        <Container className="trapForm">
+          <div className={classes.root} style={{ marginLeft: "50px" }}>
+            <AppBar position="static" color="default">
+              <Tabs
+                value={value}
+                onChange={handleChange}
+                indicatorColor="primary"
+                textColor="primary"
+                variant="scrollable"
+                scrollButtons="auto"
+                aria-label="scrollable auto tabs example"
+              >
+                <Tab label="Station One" {...a11yProps(0)} />
+                <Tab label="Station Two" {...a11yProps(1)} />
+                <Tab label="Station Three" {...a11yProps(2)} />
+                <Tab label="Station Four" {...a11yProps(3)} />
+                <Tab label="Station Five" {...a11yProps(4)} />
+              </Tabs>
+            </AppBar>
 
-      <Container className="trapForm" onSubmit={handleFormSubmit}>
-        <div className={classes.root} style={{ marginLeft: "50px" }}>
-          <AppBar position="static" color="default">
-            <Tabs
-              value={value}
-              onChange={handleChange}
-              indicatorColor="primary"
-              textColor="primary"
-              variant="scrollable"
-              scrollButtons="auto"
-              aria-label="scrollable auto tabs example"
-            >
-              <Tab label="Station One" {...a11yProps(0)} />
-              <Tab label="Station Two" {...a11yProps(1)} />
-              <Tab label="Station Three" {...a11yProps(2)} />
-              <Tab label="Station Four" {...a11yProps(3)} />
-              <Tab label="Station Five" {...a11yProps(4)} />
-            </Tabs>
-          </AppBar>
+            {trapRules.map(renderTab)}
+          </div>
 
-          {trapRules.map(renderTab)}
-        </div>
-
-        <Button
-          variant="contained"
-          onSubmit={handleFormSubmit}
-          style={{
-            marginLeft: "50px",
-            marginTop: "15px",
-            backgroundColor: "#ffa500",
-          }}
-        >
-          Submit
-        </Button>
-      </Container>
+          <Button
+            className="btn"
+            variant="contained"
+            type="submit"
+            style={{
+              marginLeft: "50px",
+              marginTop: "15px",
+              backgroundColor: "#ffa500",
+            }}
+          >
+            Submit
+          </Button>
+        </Container>
+      </form>
     </>
   );
 }
