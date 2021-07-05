@@ -106,6 +106,7 @@ function createOverallData(user) {
         shots++;
       }
       percent = hits / (shots * 25);
+      percent = percent.toFixed(2);
       shooterRows.push({ name, hits, percent });
     }
     console.log(shooterRows);
