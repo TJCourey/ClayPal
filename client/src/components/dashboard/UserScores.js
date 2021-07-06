@@ -11,8 +11,8 @@ import { useQuery } from "@apollo/client";
 import { QUERY_USERNAME } from "../../utils/queries";
 
 // Generate Order Data
-function createData(id, date, overallScore) {
-  return { id, date, overallScore };
+function createData(date, overallScore) {
+  return { date, overallScore };
 }
 
 let rows = [];
@@ -30,7 +30,6 @@ const useStyles = makeStyles((theme) => ({
 export default function Orders() {
   const classes = useStyles();
   rows = [];
-
   const { loading, data } = useQuery(QUERY_USERNAME);
   const userData = data?.user || {};
   console.log(data);
@@ -40,6 +39,7 @@ export default function Orders() {
     rows.push(createData(element.date, element.overallScore));
     console.log(rows);
   });
+
   //Holy crap this is actually working
   return (
     <React.Fragment>
@@ -54,12 +54,12 @@ export default function Orders() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.id}>
-              <TableCell>{row.id}</TableCell>
+          {rows.map((row, i) => (
+            <TableRow key={i}>
+              <TableCell>{row.date}</TableCell>
               <TableCell>{row.skeetScore}</TableCell>
               <TableCell>{row.trapScore}</TableCell>
-              <TableCell align="right">{row.date}</TableCell>
+              <TableCell align="right">{row.overallScore}</TableCell>
             </TableRow>
           ))}
         </TableBody>

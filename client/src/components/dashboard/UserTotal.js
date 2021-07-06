@@ -30,14 +30,14 @@ export default function UserTotal() {
     console.log("total", percent);
   });
   const averagePercentage = percent / userData.skeetScore.length;
-
+  const percentage = averagePercentage.toFixed(2);
   console.log(averagePercentage, "average");
 
   return (
     <React.Fragment>
       <Title>Average Percentage</Title>
       <Typography component="p" variant="h2">
-        {averagePercentage}
+        {percentage}
         {/* $3,024.00 */}
       </Typography>
       <Typography color="textSecondary" className={classes.depositContext}>
