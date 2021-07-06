@@ -18,7 +18,7 @@ function createData(time, amount) {
   return { time, amount };
 }
 
-const data2 = [];
+let data2 = [];
 
 export default function Chart() {
   const theme = useTheme();
@@ -26,7 +26,7 @@ export default function Chart() {
   const { loading, data } = useQuery(QUERY_USERNAME);
   const userData = data?.user || {};
   console.log(data);
-
+  data2 = [];
   let percent = 0;
   userData.skeetScore.forEach((element) => {
     console.log(element);
