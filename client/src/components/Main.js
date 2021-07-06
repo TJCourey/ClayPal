@@ -3,10 +3,7 @@ import Login from "../pages/Login";
 import Auth from "../utils/auth";
 
 const Main = () => {
-  if (Auth.loggedIn()) {
-    return <Dashboard />;
-  }
-  return <Login />;
+  return Auth.loggedIn() ? <Dashboard /> : <Login />;
 };
 
 export default Main;
