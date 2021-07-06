@@ -15,7 +15,7 @@ function createData(id, date, overallScore) {
   return { id, date, overallScore };
 }
 
-const rows = [];
+let rows = [];
 
 function preventDefault(event) {
   event.preventDefault();
@@ -29,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
 //Another comment here
 export default function Orders() {
   const classes = useStyles();
+  rows = [];
 
   const { loading, data } = useQuery(QUERY_USERNAME);
   const userData = data?.user || {};
