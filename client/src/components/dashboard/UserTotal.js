@@ -35,7 +35,7 @@ export default function UserTotal() {
 
   return (
     <React.Fragment>
-      <Title>Average Percentage</Title>
+      <Title>Average Hits per Round</Title>
       <Typography component="p" variant="h2">
         {percentage}
         {/* $3,024.00 */}

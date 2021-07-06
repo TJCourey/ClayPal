@@ -68,7 +68,7 @@ function createSkeetData(user) {
   user.forEach((user) => {
     const name = user.username;
     for (let i = 0; i < user.skeetScore.length; i++) {
-      const score = user.skeetScore[i].overallScore;
+      const score = Number(user.skeetScore[i].overallScore);
       skeetRows.push({ name, score });
     }
     return skeetRows;
@@ -81,7 +81,7 @@ function createTrapData(user) {
   user.forEach((user) => {
     const name = user.username;
     for (let i = 0; i < user.trapScore.length; i++) {
-      const score = user.trapScore[i].overallScore;
+      const score = Number(user.trapScore[i].overallScore);
       trapRows.push({ name, score });
     }
     return trapRows;
