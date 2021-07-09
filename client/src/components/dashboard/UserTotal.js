@@ -23,9 +23,11 @@ export default function UserTotal() {
   const userData = data?.user || {};
   console.log(data);
   let percent = 0;
+  if (loading) {
+    <> Loading...</>;
+  }
   userData.skeetScore.forEach((element) => {
     console.log(element);
-
     percent += parseFloat(element.overallScore);
     console.log("total", percent);
   });

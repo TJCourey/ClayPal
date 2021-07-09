@@ -10,7 +10,6 @@ const resolvers = {
       return await User.find().populate("skeetScore").populate("trapScore");
     },
     user: async (parent, { username }, context) => {
-      console.log(context);
       return await User.findOne({ _id: context.user._id })
         .populate("skeetScore")
         .populate("trapScore");
@@ -54,7 +53,6 @@ const resolvers = {
     },
 
     addSkeetScore: async (parent, args, context) => {
-      console.log(context.user);
       if (context.user) {
         const skeetscore = await SkeetScore.create(args);
 
