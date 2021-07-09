@@ -9,7 +9,7 @@ import Dashboard from "./pages/Dashboard";
 // import skeet from "./components/img/skeet.png";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { setContext } from "@apollo/client/link/context";
-
+import Auth from "./utils/auth";
 import {
   ApolloClient,
   InMemoryCache,
@@ -42,40 +42,67 @@ const client = new ApolloClient({
 });
 
 function App() {
-  return (
-    <ApolloProvider client={client}>
-      <div className="App">
-        {/* <h1> SKEET SKEET SKEET </h1>
+  const token = Auth.loggedIn() ? Auth.getToken() : null;
+  if (!token) {
+    return (
+      <ApolloProvider client={client}>
+        <div className="App">
+          {/* <h1> SKEET SKEET SKEET </h1>
       <img src={skeet} alt="skeet skeet skeet"></img> */}
-        <Router>
-          <MiniDrawer />
-          <Switch>
-            <Route exact path="/">
-              <Main />
-            </Route>
-            <Route exact path="/dashboard">
-              <Dashboard />
-            </Route>
-            <Route exact path="/leaderboard">
-              <StickyHeadTable />
-            </Route>
-            <Route exact path="/login">
-              <Login />
-            </Route>
-            <Route exact path="/signup">
-              <Signup />
-            </Route>
-            <Route exact path="/skeetscore">
-              <SkeetScore />
-            </Route>
-            <Route exact path="/trapscore">
-              <TrapScore />
-            </Route>
-          </Switch>
-        </Router>
-      </div>
-    </ApolloProvider>
-  );
+          <Router>
+            <MiniDrawer />
+            <Switch>
+              <Route exact path="/">
+                {Auth.loggedIn() ? <Dashboard /> : <Login />}
+              </Route>
+
+              <Route exact path="/login">
+                <Login />
+              </Route>
+              <Route exact path="/signup">
+                <Signup />
+              </Route>
+            </Switch>
+          </Router>
+        </div>
+      </ApolloProvider>
+    );
+  } else {
+    return (
+      <ApolloProvider client={client}>
+        <div className="App">
+          {/* <h1> SKEET SKEET SKEET </h1>
+    <img src={skeet} alt="skeet skeet skeet"></img> */}
+          <Router>
+            <MiniDrawer />
+            <Switch>
+              <Route exact path="/">
+                {Auth.loggedIn() ? <Dashboard /> : <Login />}
+              </Route>
+              <Route exact path="/dashboard">
+                <Dashboard />
+              </Route>
+              <Route exact path="/leaderboard">
+                <StickyHeadTable />
+              </Route>
+              <Route exact path="/login">
+                <Login />
+              </Route>
+              <Route exact path="/signup">
+                <Signup />
+              </Route>
+              <Route exact path="/skeetscore">
+                <SkeetScore />
+              </Route>
+              <Route exact path="/trapscore">
+                <TrapScore />
+              </Route>
+            </Switch>
+          </Router>
+        </div>
+      </ApolloProvider>
+    );
+  }
 }
 
 export default App;

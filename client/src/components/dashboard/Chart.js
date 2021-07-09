@@ -24,10 +24,13 @@ export default function Chart() {
   const theme = useTheme();
 
   const { loading, data } = useQuery(QUERY_USERNAME);
-  const userData = data?.user || {};
+  const userData = data?.user || [];
   console.log(data);
   data2 = [];
   let percent = 0;
+  if (loading) {
+    return <>Loading...</>;
+  }
   userData.skeetScore.forEach((element) => {
     console.log(element);
 

@@ -32,7 +32,9 @@ export default function Orders() {
   rows = [];
   const { loading, data } = useQuery(QUERY_USERNAME);
   const userData = data?.user || {};
-  console.log(data);
+  if (loading) {
+    <> Loading...</>;
+  }
   userData.skeetScore.forEach((element) => {
     console.log(element);
     let percent = 0;

@@ -23,7 +23,6 @@ db.once("open", async () => {
         },
         { new: true }
       );
-      //   console.log(user);
     }
     for (let i = 0; i < trapSeeds.length; i++) {
       const { _id, shooter } = await TrapScore.create(trapSeeds[i]);
@@ -36,7 +35,6 @@ db.once("open", async () => {
         },
         { new: true }
       );
-      //   console.log(user);
     }
   } catch (err) {
     console.error(err);
