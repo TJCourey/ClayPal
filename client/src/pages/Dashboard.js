@@ -132,9 +132,9 @@ export default function Dashboard() {
   if (loading) {
     return null;
   }
-  console.log(data);
+  // console.log(data);
   const activeUser = data?.users || [];
-  console.log(activeUser);
+  // console.log(activeUser);
 
   return (
     <div className={classes.root} style={{ marginLeft: "50px" }}>

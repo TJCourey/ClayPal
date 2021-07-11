@@ -31,7 +31,13 @@ export default function UserTotal() {
     percent += parseFloat(element.overallScore);
     console.log("total", percent);
   });
-  const averagePercentage = percent / userData.skeetScore.length;
+  userData.trapScore.forEach((element) => {
+    console.log(element);
+    percent += parseFloat(element.overallScore);
+    console.log("total", percent);
+  });
+  const averagePercentage =
+    percent / (userData.skeetScore.length + userData.trapScore.length);
   const percentage = averagePercentage.toFixed(2);
   console.log(averagePercentage, "average");
 

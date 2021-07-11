@@ -41,6 +41,12 @@ export default function Orders() {
     rows.push(createData(element.date, element.overallScore));
     console.log(rows);
   });
+  userData.trapScore.forEach((element) => {
+    console.log(element);
+    let percent = 0;
+    rows.push(createData(element.date, element.overallScore));
+    console.log(rows);
+  });
 
   //Holy crap this is actually working
   return (
