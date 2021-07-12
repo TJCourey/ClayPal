@@ -33,15 +33,16 @@ export default function Orders() {
   const { loading, data } = useQuery(QUERY_USERNAME);
   const userData = data?.user || {};
   if (loading) {
-    <> Loading...</>;
+    return(<> Loading...</>)
   }
+  let percent = 0;
+  if(userData && userData.skeetScore){
   userData.skeetScore.forEach((element) => {
     console.log(element);
-    let percent = 0;
     rows.push(createData(element.date, element.overallScore));
     console.log(rows);
   });
-
+  }
   //Holy crap this is actually working
   return (
     <React.Fragment>

@@ -23,16 +23,20 @@ export default function UserTotal() {
   const userData = data?.user || {};
   console.log(data);
   let percent = 0;
+  let averagePercentage = 0
+  let percentage = 0;
   if (loading) {
-    <> Loading...</>;
+    return(<> Loading...</>)
   }
-  userData.skeetScore.forEach((element) => {
-    console.log(element);
-    percent += parseFloat(element.overallScore);
-    console.log("total", percent);
-  });
-  const averagePercentage = percent / userData.skeetScore.length;
-  const percentage = averagePercentage.toFixed(2);
+  if(userData && userData.skeetScore){
+    userData.skeetScore.forEach((element) => {
+      console.log(element);
+      percent += parseFloat(element.overallScore);
+      console.log("total", percent);
+    });
+    averagePercentage = percent / userData.skeetScore.length;
+    percentage= averagePercentage.toFixed(2);
+  }
   console.log(averagePercentage, "average");
 
   return (
