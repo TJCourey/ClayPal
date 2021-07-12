@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import Tabs from "@material-ui/core/Tabs";
@@ -12,6 +12,9 @@ import AppBar from "@material-ui/core/AppBar";
 import { useMutation } from "@apollo/client";
 import { ADD_SKEET_SCORE } from "../utils/mutations";
 
+import { TOGGLE_SKEET_HIT,RESET_SKEET } from "../utils/actions";
+import { useGlobalContext } from "../utils/GlobalState";
+import { tallyScore } from "../utils/helper";
 const skeetRules = [
   {
     id: 0,
@@ -109,33 +112,37 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SkeetScore() {
+  const [state,dispatch] = useGlobalContext();
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
   // const [station, setStation] = React.useState("");
   // const [weapon, setWeapon] = React.useState("");
   // const [shooter, setShooter] = React.useState("");
-  const [overallScore, setOverallScore] = React.useState("");
+  const [overallScore, setOverallScore] = useState("");
   const [addSkeetScore, { error }] = useMutation(ADD_SKEET_SCORE);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
-  const handleClick = (event) => {
-    setOverallScore(Number(overallScore + 1));
-    console.log(overallScore);
+  const handleClick = (station,target) => {
+    dispatch({
+      type:TOGGLE_SKEET_HIT,
+      payload:{station,target}
+    })
   };
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log("sub button pressed");
     try {
       const { data } = await addSkeetScore({
-        variables: { overallScore: overallScore.toString() },
+        variables: { overallScore: tallyScore(state.skeetStations).toString() },
       });
-      window.location.reload();
+      dispatch({type:RESET_SKEET})
+      //window.location.reload();
     } catch (err) {
       console.error(err);
     }
   };
+  const {skeetStations} = state;
   const renderTab = (tab, i) => {
     const n = tab.maxPoints;
     return (
@@ -144,11 +151,13 @@ export default function SkeetScore() {
         {tab.rules}
         <br></br>
         Hits:
+       
         {[...Array(n)].map((elementInArray, index) => (
           <Checkbox
+            checked={skeetStations[tab.id][index]}
             key={index}
             inputProps={{ "aria-label": "uncontrolled-checkbox" }}
-            onChange={() => handleClick()}
+            onChange={() => handleClick(tab.id,index)}
           />
         ))}
       </TabPanel>

@@ -1,0 +1,4 @@
+export const TOGGLE_SKEET_HIT = "TOGGLE_SKEET_HIT";
+export const TOGGLE_TRAP_HIT = "TOGGLE_TRAP_HIT";
+export const RESET_TRAP = "RESET_TRAP";
+export const RESET_SKEET = "RESET_SKEET";

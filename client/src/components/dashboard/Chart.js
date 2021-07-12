@@ -24,20 +24,22 @@ export default function Chart() {
   const theme = useTheme();
 
   const { loading, data } = useQuery(QUERY_USERNAME);
+  if (loading) {
+    return (<>Loading...</>)
+  }
   const userData = data?.user || [];
   console.log(data);
   data2 = [];
   let percent = 0;
-  if (loading) {
-    return <>Loading...</>;
+  if(userData && userData.skeetScore){
+    userData.skeetScore.forEach((element) => {
+      console.log(element);
+  
+      data2.push(createData(element.date, element.overallScore));
+      percent = element.overallScore / 25;
+      console.log(percent);
+    });
   }
-  userData.skeetScore.forEach((element) => {
-    console.log(element);
-
-    data2.push(createData(element.date, element.overallScore));
-    percent = element.overallScore / 25;
-    console.log(percent);
-  });
   // createData("00:00", 0),
   // createData("03:00", 300),
   // createData("06:00", 600),

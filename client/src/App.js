@@ -16,6 +16,7 @@ import {
   ApolloProvider,
   createHttpLink,
 } from "@apollo/client";
+import { GlobalProvider } from "./utils/GlobalState.js";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -50,6 +51,7 @@ function App() {
           {/* <h1> SKEET SKEET SKEET </h1>
       <img src={skeet} alt="skeet skeet skeet"></img> */}
           <Router>
+            <GlobalProvider>
             <MiniDrawer />
             <Switch>
               <Route exact path="/">
@@ -63,6 +65,7 @@ function App() {
                 <Signup />
               </Route>
             </Switch>
+            </GlobalProvider>
           </Router>
         </div>
       </ApolloProvider>
@@ -74,6 +77,7 @@ function App() {
           {/* <h1> SKEET SKEET SKEET </h1>
     <img src={skeet} alt="skeet skeet skeet"></img> */}
           <Router>
+            <GlobalProvider>
             <MiniDrawer />
             <Switch>
               <Route exact path="/">
@@ -98,6 +102,7 @@ function App() {
                 <TrapScore />
               </Route>
             </Switch>
+            </GlobalProvider>
           </Router>
         </div>
       </ApolloProvider>

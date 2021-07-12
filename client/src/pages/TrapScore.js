@@ -14,7 +14,9 @@ import Box from "@material-ui/core/Box";
 import { useMutation } from "@apollo/client";
 import { ADD_TRAP_SCORE } from "../utils/mutations";
 import { Redirect } from "react-router-dom";
-
+import {  TOGGLE_TRAP_HIT,RESET_TRAP } from "../utils/actions";
+import { useGlobalContext } from "../utils/GlobalState";
+import { tallyScore } from "../utils/helper";
 const trapRules = [
   {
     id: 0,
@@ -86,6 +88,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function TrapScore() {
+  const [state,dispatch]= useGlobalContext();
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
   const [overallScore, setOverallScore] = React.useState("");
@@ -101,21 +104,22 @@ export default function TrapScore() {
     console.log("sub button pressed");
     try {
       const { data } = await addTrapScore({
-        variables: { overallScore: overallScore.toString() },
+        variables: { overallScore: tallyScore(state.trapStations).toString() },
       });
-
-      window.location.reload();
+      dispatch({type:RESET_TRAP})
+      //window.location.reload();
     } catch (err) {
       console.error(err);
     }
   };
   //Foreach, click, adds 1 to the score
-  const handleClick = (event) => {
-    setOverallScore(Number(overallScore + 1));
-    console.log(overallScore);
-    // setSubmitScore(overallScore);
+  const handleClick = (station,target) => {
+    dispatch({
+      type:TOGGLE_TRAP_HIT,
+      payload:{station,target}
+    })
   };
-
+  const {trapStations} = state;
   const renderTab = (tab, i) => {
     const n = tab.maxPoints;
     return (
@@ -125,9 +129,10 @@ export default function TrapScore() {
         Hits:
         {[...Array(n)].map((elementInArray, index) => (
           <Checkbox
+            checked={trapStations[tab.id][index]}
             key={index}
             inputProps={{ "aria-label": "uncontrolled-checkbox" }}
-            onChange={() => handleClick()}
+            onChange={() => handleClick(tab.id,index)}
           />
         ))}
       </TabPanel>
