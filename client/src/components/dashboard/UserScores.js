@@ -76,7 +76,7 @@ export default function Orders() {
       </Table>
       <div className={classes.seeMore}>
         <Link color="primary" href="#" onClick={preventDefault}>
-          {/* See More Scores */}
+          See More Scores
         </Link>
       </div>
     </React.Fragment>
