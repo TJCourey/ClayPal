@@ -9,7 +9,8 @@ import { QUERY_USERNAME } from "../../utils/queries";
 function preventDefault(event) {
   event.preventDefault();
 }
-//Dont really know whats going on
+//Don't really know whats going on
+// materialUI uses a overall style and theme sheet which we can apply styles from -TJC
 const useStyles = makeStyles({
   depositContext: {
     flex: 1,
@@ -35,8 +36,6 @@ export default function UserTotal() {
       console.log("total", percent);
     });
   }
-  // averagePercentage = percent / userData.skeetScore.length;
-  // percentage = averagePercentage.toFixed(2);
   if (userData && userData.trapScore) {
     userData.trapScore.forEach((element) => {
       console.log(element);
