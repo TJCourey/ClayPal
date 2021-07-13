@@ -33,15 +33,22 @@ export default function Orders() {
   const { loading, data } = useQuery(QUERY_USERNAME);
   const userData = data?.user || {};
   if (loading) {
-    return(<> Loading...</>)
+    return <> Loading...</>;
   }
   let percent = 0;
-  if(userData && userData.skeetScore){
-  userData.skeetScore.forEach((element) => {
-    console.log(element);
-    rows.push(createData(element.date, element.overallScore));
-    console.log(rows);
-  });
+  if (userData && userData.skeetScore) {
+    userData.skeetScore.forEach((element) => {
+      console.log(element);
+      rows.push(createData(element.date, element.overallScore));
+      console.log(rows);
+    });
+  }
+  if (userData && userData.trapScore) {
+    userData.trapScore.forEach((element) => {
+      console.log(element);
+      rows.push(createData(element.date, element.overallScore));
+      console.log(rows);
+    });
   }
   //Holy crap this is actually working
   return (
@@ -69,7 +76,7 @@ export default function Orders() {
       </Table>
       <div className={classes.seeMore}>
         <Link color="primary" href="#" onClick={preventDefault}>
-          See more orders
+          {/* See More Scores */}
         </Link>
       </div>
     </React.Fragment>
