@@ -29,7 +29,7 @@ import ShowChartIcon from "@material-ui/icons/ShowChart";
 
 import Auth from "../utils/auth";
 // import { logout } from "../utils/auth";
-import { SwapVerticalCircleSharp } from "@material-ui/icons";
+// import { SwapVerticalCircleSharp } from "@material-ui/icons";
 
 const drawerWidth = 240;
 
@@ -223,7 +223,7 @@ const renderNavItems = (text, index) => {
           </Link>
         );
 
-      default:
+        // default:
         break;
     }
   } else {
