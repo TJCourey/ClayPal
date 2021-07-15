@@ -43,11 +43,12 @@ export default function UserTotal() {
       console.log("total", percent);
     });
   }
-  averagePercentage =
-    percent / (userData.trapScore.length + userData.skeetScore.length);
-  percentage = averagePercentage.toFixed(2);
-  console.log(averagePercentage, "average");
-
+  if (userData && (userData.skeetScore || userData.trapScore)) {
+    averagePercentage =
+      percent / (userData.trapScore.length + userData.skeetScore.length);
+    percentage = averagePercentage.toFixed(2);
+    console.log(averagePercentage, "average");
+  }
   return (
     <React.Fragment>
       <Title>Average Hits per Round</Title>

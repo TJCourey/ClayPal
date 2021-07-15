@@ -11,7 +11,7 @@ import {
 import Title from "./Title";
 import { useQuery } from "@apollo/client";
 import { QUERY_USERNAME } from "../../utils/queries";
-import moment from "moment";
+// import moment from "moment";
 
 function createData(time, amount) {
   return { time, amount };

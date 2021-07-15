@@ -35,7 +35,8 @@ export default function Orders() {
   if (loading) {
     return <> Loading...</>;
   }
-  let percent = 0;
+  // Save percentage for possible later use - TJC
+  // let percent = 0;
   if (userData && userData.skeetScore) {
     userData.skeetScore.forEach((element) => {
       console.log(element);
