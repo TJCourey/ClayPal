@@ -42,6 +42,7 @@ const client = new ApolloClient({
 
 function App() {
   const token = Auth.loggedIn() ? Auth.getToken() : null;
+  // Auth.isTokenExpired(token);
   if (!token) {
     return (
       <ApolloProvider client={client}>
@@ -77,16 +78,16 @@ function App() {
                 <Route exact path="/">
                   {Auth.loggedIn() ? <Dashboard /> : <Login />}
                 </Route>
-                <Route exact path="/dashboard">
+                <Route path="/dashboard">
                   <Dashboard />
                 </Route>
                 <Route exact path="/leaderboard">
                   <StickyHeadTable />
                 </Route>
-                <Route exact path="/login">
+                <Route path="/login">
                   <Login />
                 </Route>
-                <Route exact path="/signup">
+                <Route path="/signup">
                   <Signup />
                 </Route>
                 <Route exact path="/skeetscore">

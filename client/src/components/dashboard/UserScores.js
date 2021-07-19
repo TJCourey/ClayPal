@@ -51,6 +51,10 @@ export default function Orders() {
       console.log(rows);
     });
   }
+  if (userData && (userData.skeetScore || userData.trapScore)) {
+    rows.sort((a, b) => (a.date > b.date ? 1 : -1));
+  }
+
   //Holy crap this is actually working
   return (
     <React.Fragment>

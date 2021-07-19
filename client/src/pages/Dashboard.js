@@ -11,7 +11,6 @@ import Link from "@material-ui/core/Link";
 import Chart from "../components/dashboard/Chart";
 import UserTotal from "../components/dashboard/UserTotal";
 import UserScores from "../components/dashboard/UserScores";
-import Auth from "../utils/auth";
 import { QUERY_USERNAME } from "../utils/queries";
 import { useQuery } from "@apollo/client";
 
