@@ -11,7 +11,6 @@ import {
 import Title from "./Title";
 import { useQuery } from "@apollo/client";
 import { QUERY_USERNAME } from "../../utils/queries";
-// import moment from "moment";
 
 function createData(time, amount) {
   return { time, amount };
@@ -27,25 +26,16 @@ export default function Chart() {
     return <>Loading...</>;
   }
   const userData = data?.user || [];
-  console.log(data);
+
   data2 = [];
-  let percent = 0;
   if (userData && userData.skeetScore) {
     userData.skeetScore.forEach((element) => {
-      console.log(element);
-
       data2.push(createData(element.date, element.overallScore));
-      percent = element.overallScore / 25;
-      console.log(percent);
     });
   }
   if (userData && userData.trapScore) {
     userData.trapScore.forEach((element) => {
-      console.log(element);
-
       data2.push(createData(element.date, element.overallScore));
-      percent = element.overallScore / 25;
-      console.log(percent);
     });
   }
 

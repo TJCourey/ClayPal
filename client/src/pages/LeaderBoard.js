@@ -20,12 +20,6 @@ import { useQuery } from "@apollo/client";
 
 const skeetColumns = [
   { id: "name", label: "Name", minWidth: 170 },
-  // {
-  //   id: "skeetWeapon",
-  //   label: "Weapon",
-  //   minWidth: 170,
-  //   align: "right",
-  // },
   {
     id: "score",
     minWidth: 170,
@@ -35,12 +29,6 @@ const skeetColumns = [
 ];
 const trapColumns = [
   { id: "name", label: "Name", minWidth: 170 },
-  // {
-  //   id: "trapWeapon",
-  //   label: "Weapon",
-  //   minWidth: 170,
-  //   align: "right",
-  // },
   {
     id: "score",
     label: "Trap Score",
@@ -109,7 +97,6 @@ function createOverallData(user) {
       percent = percent.toFixed(2);
       shooterRows.push({ name, hits, percent });
     }
-    console.log(shooterRows);
   });
   shooterRows.sort((a, b) => (a.percent > b.percent ? -1 : 1));
   return shooterRows;
@@ -164,12 +151,7 @@ export default function StickyHeadTable() {
   if (loading) {
     return null;
   }
-  console.log(data);
   const users = data?.users || [];
-  console.log(users);
-  // const rows = users?.map(createData);
-  // users?.map(createData);
-  // const rows = [];
   const skeetRows = createSkeetData(users);
   const trapRows = createTrapData(users);
   const overallRows = createOverallData(users);

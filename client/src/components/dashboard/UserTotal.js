@@ -9,8 +9,6 @@ import { QUERY_USERNAME } from "../../utils/queries";
 function preventDefault(event) {
   event.preventDefault();
 }
-//Don't really know whats going on
-// materialUI uses a overall style and theme sheet which we can apply styles from -TJC
 const useStyles = makeStyles({
   depositContext: {
     flex: 1,
@@ -22,7 +20,6 @@ export default function UserTotal() {
 
   const { loading, data } = useQuery(QUERY_USERNAME);
   const userData = data?.user || {};
-  console.log(data);
   let percent = 0;
   let averagePercentage = 0;
   let percentage = 0;
@@ -31,34 +28,29 @@ export default function UserTotal() {
   }
   if (userData && userData.skeetScore) {
     userData.skeetScore.forEach((element) => {
-      console.log(element);
       percent += parseFloat(element.overallScore);
-      console.log("total", percent);
     });
   }
   if (userData && userData.trapScore) {
     userData.trapScore.forEach((element) => {
-      console.log(element);
       percent += parseFloat(element.overallScore);
-      console.log("total", percent);
     });
   }
   if (userData && (userData.skeetScore || userData.trapScore)) {
     averagePercentage =
       percent / (userData.trapScore.length + userData.skeetScore.length);
     percentage = averagePercentage.toFixed(2);
-    console.log(averagePercentage, "average");
   }
   return (
     <React.Fragment>
       <Title>Average Hits per Round</Title>
       <Typography component="p" variant="h2">
         {percentage}
-        {/* $3,024.00 */}
       </Typography>
-      <Typography color="textSecondary" className={classes.depositContext}>
-        {/* on 15 March, 2019 */}
-      </Typography>
+      <Typography
+        color="textSecondary"
+        className={classes.depositContext}
+      ></Typography>
       <div>
         <Link color="primary" href="#" onClick={preventDefault}>
           View Shoots

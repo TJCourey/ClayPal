@@ -24,7 +24,7 @@ export default function reducer(state,action){
                 ...state,
                 skeetStations:[[false,false,false,false],[false,false,false,false],[false,false],[false,false],[false,false],[false,false,false,false],[false,false,false,false],[false,false],[false]]
             } 
-    }
+    } 
 }
 
 

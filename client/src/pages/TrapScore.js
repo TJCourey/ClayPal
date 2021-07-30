@@ -4,8 +4,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
-import FormControl from "@material-ui/core/FormControl";
-import FormGroup from "@material-ui/core/FormGroup";
 import AppBar from "@material-ui/core/AppBar";
 import Checkbox from "@material-ui/core/Checkbox";
 import Button from "@material-ui/core/Button";
@@ -13,8 +11,7 @@ import Container from "@material-ui/core/Container";
 import Box from "@material-ui/core/Box";
 import { useMutation } from "@apollo/client";
 import { ADD_TRAP_SCORE } from "../utils/mutations";
-import { Redirect } from "react-router-dom";
-import {  TOGGLE_TRAP_HIT,RESET_TRAP } from "../utils/actions";
+import { TOGGLE_TRAP_HIT, RESET_TRAP } from "../utils/actions";
 import { useGlobalContext } from "../utils/GlobalState";
 import { tallyScore } from "../utils/helper";
 const trapRules = [
@@ -88,7 +85,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function TrapScore() {
-  const [state,dispatch]= useGlobalContext();
+  const [state, dispatch] = useGlobalContext();
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
   const [overallScore, setOverallScore] = React.useState("");
@@ -106,20 +103,18 @@ export default function TrapScore() {
       const { data } = await addTrapScore({
         variables: { overallScore: tallyScore(state.trapStations).toString() },
       });
-      dispatch({type:RESET_TRAP})
-      //window.location.reload();
+      dispatch({ type: RESET_TRAP });
     } catch (err) {
       console.error(err);
     }
   };
-  //Foreach, click, adds 1 to the score
-  const handleClick = (station,target) => {
+  const handleClick = (station, target) => {
     dispatch({
-      type:TOGGLE_TRAP_HIT,
-      payload:{station,target}
-    })
+      type: TOGGLE_TRAP_HIT,
+      payload: { station, target },
+    });
   };
-  const {trapStations} = state;
+  const { trapStations } = state;
   const renderTab = (tab, i) => {
     const n = tab.maxPoints;
     return (
@@ -132,7 +127,7 @@ export default function TrapScore() {
             checked={trapStations[tab.id][index]}
             key={index}
             inputProps={{ "aria-label": "uncontrolled-checkbox" }}
-            onChange={() => handleClick(tab.id,index)}
+            onChange={() => handleClick(tab.id, index)}
           />
         ))}
       </TabPanel>
@@ -141,11 +136,7 @@ export default function TrapScore() {
 
   return (
     <>
-      <Container
-        className="rulesContainer"
-        // style={{ textAlign: "center" }}
-        xs={9}
-      >
+      <Container className="rulesContainer" xs={9}>
         <h1 style={{ paddingLeft: "15%" }}>Trap Shooting</h1>
         <h3 style={{ textAlign: "center", paddingLeft: "15%" }}>{addRules}</h3>
       </Container>

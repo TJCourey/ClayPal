@@ -28,8 +28,6 @@ import Box from "@material-ui/core/Box";
 import ShowChartIcon from "@material-ui/icons/ShowChart";
 
 import Auth from "../utils/auth";
-// import { logout } from "../utils/auth";
-// import { SwapVerticalCircleSharp } from "@material-ui/icons";
 
 const drawerWidth = 240;
 
@@ -105,14 +103,13 @@ const useStyles = makeStyles((theme) => ({
 const logout = () => {
   localStorage.clear();
   localStorage.removeItem("id_token");
-  // window.location.reload();
+
   window.location.href = "/login";
 };
 
 const renderNavItems = (text, index) => {
   let result = null;
   if (Auth.loggedIn()) {
-    // console.log("Auth.loggedIn()", Auth.loggedIn(), "index", index);
     switch (index) {
       case 0:
         result = (
@@ -223,8 +220,8 @@ const renderNavItems = (text, index) => {
           </Link>
         );
 
-        // default:
         break;
+      default:
     }
   } else {
     switch (index) {
@@ -285,7 +282,7 @@ const renderLinkItems = (text, index) => {
       result = (
         <a
           style={{ textDecoration: "none", color: "black", marginTop: "75px" }}
-          rel="NRAsafety"
+          rel="noreferrer"
           href="https://gunsafetyrules.nra.org/"
           alt="NRA Safety"
           target="_blank"
@@ -306,7 +303,7 @@ const renderLinkItems = (text, index) => {
       result = (
         <a
           style={{ textDecoration: "none", color: "black", marginTop: "15px" }}
-          rel="Ammo"
+          rel="noreferrer"
           href="https://www.freedommunitions.com/"
           alt="Buy Ammo"
           target="_blank"
@@ -326,7 +323,7 @@ const renderLinkItems = (text, index) => {
       result = (
         <a
           style={{ textDecoration: "none", color: "black", marginTop: "15px" }}
-          rel="Wheretoshoot"
+          rel="noreferrer"
           href="https://www.wheretoshoot.org/"
           alt="Where to shoot"
           target="_blank"
@@ -342,6 +339,7 @@ const renderLinkItems = (text, index) => {
         </a>
       );
       break;
+    default:
   }
   return result;
 };

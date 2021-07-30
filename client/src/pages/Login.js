@@ -85,7 +85,6 @@ const Login = (props) => {
   // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
     try {
       const { data, error } = await login({
         variables: { ...formState },
@@ -94,8 +93,6 @@ const Login = (props) => {
       if (error) {
         console.log(error);
       }
-
-      console.log(data);
       Auth.login(data.login.token);
     } catch (e) {
       console.error(e);
@@ -131,7 +128,7 @@ const Login = (props) => {
           {data ? (
             <p>
               Success! You may now head
-              <Link to="/"> back to the homepage.</Link>
+              <Link to="/dashboard"> back to the homepage.</Link>
             </p>
           ) : (
             <form
@@ -165,10 +162,11 @@ const Login = (props) => {
                 id="password"
                 autoComplete="current-password"
               />
+              {/* TODO: Add fuctionality to remember user
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
                 label="Remember me"
-              />
+              /> */}
               <Button
                 type="submit"
                 fullWidth
@@ -179,11 +177,12 @@ const Login = (props) => {
                 Sign In
               </Button>
               <Grid container>
+                {/*TODO: Add functionality to recover password 
                 <Grid item xs>
                   <Link href="#" variant="body2">
                     Forgot password?
                   </Link>
-                </Grid>
+                </Grid> */}
                 <Grid item>
                   <Link to="/signup" variant="body2">
                     {"Don't have an account? Sign Up"}
