@@ -80,8 +80,6 @@ const Signup = () => {
   // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
-    console.log(data);
 
     try {
       const { data } = await addUser({
@@ -123,19 +121,6 @@ const Signup = () => {
                 autoFocus
               />
             </Grid>
-            {/* <Grid item xs={12} sm={6}>
-              <TextField
-                value={formState.lastName}
-                onChange={handleChange}
-                variant="outlined"
-                required
-                fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="lname"
-              />
-            </Grid> */}
             <Grid item xs={12}>
               <TextField
                 value={formState.email}
@@ -163,12 +148,13 @@ const Signup = () => {
                 autoComplete="current-password"
               />
             </Grid>
+            {/* TODO: Add email list functionality, change message to be less dumber
             <Grid item xs={12}>
               <FormControlLabel
                 control={<Checkbox value="allowExtraEmails" color="primary" />}
                 label="I want to be one of the cool kids and recieve emails"
               />
-            </Grid>
+            </Grid> */}
           </Grid>
           <Button
             onClick={login}

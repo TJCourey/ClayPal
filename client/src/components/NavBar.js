@@ -28,8 +28,6 @@ import Box from "@material-ui/core/Box";
 import ShowChartIcon from "@material-ui/icons/ShowChart";
 
 import Auth from "../utils/auth";
-// import { logout } from "../utils/auth";
-// import { SwapVerticalCircleSharp } from "@material-ui/icons";
 
 const drawerWidth = 240;
 
@@ -105,14 +103,13 @@ const useStyles = makeStyles((theme) => ({
 const logout = () => {
   localStorage.clear();
   localStorage.removeItem("id_token");
-  // window.location.reload();
+
   window.location.href = "/login";
 };
 
 const renderNavItems = (text, index) => {
   let result = null;
   if (Auth.loggedIn()) {
-    // console.log("Auth.loggedIn()", Auth.loggedIn(), "index", index);
     switch (index) {
       case 0:
         result = (

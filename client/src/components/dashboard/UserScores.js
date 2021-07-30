@@ -10,7 +10,6 @@ import Title from "./Title";
 import { useQuery } from "@apollo/client";
 import { QUERY_USERNAME } from "../../utils/queries";
 
-// Generate Order Data
 function createData(date, overallScore) {
   return { date, overallScore };
 }
@@ -26,7 +25,6 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(3),
   },
 }));
-//Another comment here
 export default function Orders() {
   const classes = useStyles();
   rows = [];
@@ -35,27 +33,24 @@ export default function Orders() {
   if (loading) {
     return <> Loading...</>;
   }
-  // Save percentage for possible later use - TJC
-  // let percent = 0;
   if (userData && userData.skeetScore) {
     userData.skeetScore.forEach((element) => {
-      console.log(element);
       rows.push(createData(element.date, element.overallScore));
-      console.log(rows);
     });
   }
   if (userData && userData.trapScore) {
     userData.trapScore.forEach((element) => {
-      console.log(element);
       rows.push(createData(element.date, element.overallScore));
-      console.log(rows);
     });
   }
   if (userData && (userData.skeetScore || userData.trapScore)) {
-    rows.sort((a, b) => (a.date > b.date ? 1 : -1));
+    rows.sort(function (a, b) {
+      var dateA = new Date(a.date);
+      var dateB = new Date(b.date);
+      return dateA - dateB;
+    });
   }
 
-  //Holy crap this is actually working
   return (
     <React.Fragment>
       <Title>Recent Shoots</Title>

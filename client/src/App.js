@@ -42,7 +42,6 @@ const client = new ApolloClient({
 
 function App() {
   const token = Auth.loggedIn() ? Auth.getToken() : null;
-  // Auth.isTokenExpired(token);
   if (!token) {
     return (
       <ApolloProvider client={client}>
