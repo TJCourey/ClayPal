@@ -1,8 +1,6 @@
 const mongoose = require("mongoose");
 const CONFIG = require("../../config.json");
 
-console.log(CONFIG);
-
 mongoose.connect(process.env.MONGODB_URI || CONFIG.localMongo, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
