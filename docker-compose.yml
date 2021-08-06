@@ -5,8 +5,6 @@ services:
     container_name: ClayPalMongoDB
     ports:
       - "27018:27017"
-    environment:
-      - MONGO_INITDB_DATABASE=ahhskeetskeet
     volumes:
       - db-data:/data/db
       - mongo-config:/data/configdb
