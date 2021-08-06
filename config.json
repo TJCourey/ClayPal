@@ -1,1 +1,1 @@
-{ "localMongo": "mongodb://localhost/ahhskeetskeet", "localPort": 3001 }
+{ "localMongo": "mongodb://localhost:27018/ahhskeetskeet", "localPort": 3001 }
