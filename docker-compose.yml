@@ -1,0 +1,15 @@
+version: "3" # optional since v1.27.0
+services:
+  database:
+    image: mongo:latest
+    container_name: ClayPalMongoDB
+    ports:
+      - "27018:27017"
+    environment:
+      - MONGO_INITDB_DATABASE=ahhskeetskeet
+    volumes:
+      - db-data:/data/db
+      - mongo-config:/data/configdb
+volumes:
+  db-data:
+  mongo-config:
