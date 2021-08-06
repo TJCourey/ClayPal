@@ -25,10 +25,22 @@ Using this Full Stack application, a user can interact with our ClayPal applicat
 - [Test](#tests)
 - [Questions](#questions)
 
-# Installation
+# Installation/Running
 
-No installation necessary, visit our website here:
-[ClayPal](https://claypal.herokuapp.com/)
+If you'd like to try out the app you can visit the deployed version: [ClayPal](https://claypal.herokuapp.com/)
+
+For local development installation:
+	**Dependencies:** 
+		npm
+		docker
+
+	*Note:* All commands below should be run from the project's root unless specified otherwise.
+
+	1. Run `npm i` 
+	2. Run `docker-compose up -d` to spin up the database locally.
+	3. If this is your first time running the program, you should seed the database by running `npm run seed`
+	4. Rename `secrets.json.example` in the project root to `secrets.json` and change the userAuth string to a random, secret string.
+	5. Run `npm run develop`, which will open a browser and show the app.
 
 # Technologies
 
