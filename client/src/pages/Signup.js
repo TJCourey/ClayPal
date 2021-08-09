@@ -157,7 +157,6 @@ const Signup = () => {
             </Grid> */}
           </Grid>
           <Button
-            onClick={login}
             type="submit"
             fullWidth
             variant="contained"
